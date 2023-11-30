@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"fcntl.h": "c",
+		"__locale": "c",
+		"ios": "cpp",
+		"__tuple": "c",
+		"array": "c",
+		"fractol.h": "c"
+	}
+}
