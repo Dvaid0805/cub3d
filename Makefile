@@ -1,6 +1,6 @@
-NAME = cub3d
+NAME = cub3D
 
-CC = gcc -g
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
 REMOVE = rm -rf
 
@@ -24,12 +24,22 @@ RESET = \033[0m
 U_LINE = \033[4m
 YELLOW = \033[1;38;5;226m
 
+OS := $(shell uname)
+
+ifeq ($(OS), Darwin)
+	# macOS specific flags
+	LIBS = -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/"
+else
+	# Linux specific flags
+	LIBS = -ldl -lglfw -pthread -lm
+endif
+
 all: $(MLX_LIB_PATH) $(LIBFT_LIB_PATH) $(NAME)
 
 .SILENT: all $(MLX_LIB_PATH) $(LIBFT_LIB_PATH) $(NAME) $(OBJ) clean fclean re
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX_LIB_PATH) -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/" $(HEADERS) -o $@
+	$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX_LIB_PATH) $(LIBS) $(HEADERS) -o $@
 	echo "\n$(ORANGE)$(U_LINE)⭐️ $(NAME): Compiled ⭐️$(RESET) \n"
 
 $(MLX_LIB_PATH):
