@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:12:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/08/20 18:12:25 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:35:46 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,7 @@ char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
-void		ft_putchar_fd(char c, int fd);
-void		ft_putstr_fd(char *s, int fd);
-void		ft_putendl_fd(char *s, int fd);
-void		ft_putnbr_fd(int n, int fd);
-int			ft_printf(const char *str, ...);
-size_t		ft_putstr(char *str);
-size_t		ft_putchar(int c);
-size_t		ft_putdec(int n);
-size_t		ft_putdeclong(unsigned int n);
 char		*ft_itoalong(long n);
-int			ft_putvoid(void *p);
-int			ft_puthexa(unsigned long long nb, char ch);
 char		*ft_free(char *buffer, char *buf);
 char		*get_next_line(int fd);
 double		ft_atof(char *str);
