@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/11/30 13:49:13 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:57:08 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ typedef struct s_info
 	mlx_t		*mlx;
 	mlx_image_t	*g_img;
 }				t_info;
+
+void	put_usage(t_info *info);
 
 #endif
