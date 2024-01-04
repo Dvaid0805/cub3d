@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:39:34 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/08/20 19:25:00 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:42:02 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char	*read_file(int fd, char *res)
 	return (res);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, char **str)
 {
 	static char	*buffer[564];
 	char		*line;
@@ -95,5 +95,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_line(buffer[fd]);
 	buffer[fd] = ft_next(buffer[fd]);
+	if (str != NULL)
+		*str = line;
 	return (line);
 }

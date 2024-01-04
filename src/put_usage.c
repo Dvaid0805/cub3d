@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:53:29 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/03 12:53:33 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:42:18 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ char	*ft_read_all(int fd)
 	res = ft_calloc(1, sizeof(char));
 	if (!res)
 		return (NULL);
-	line = get_next_line(fd);
+	line = get_next_line(fd, NULL);
 	while (line)
 	{
 		temp = ft_strjoin(res, line);
 		free(res);
 		free(line);
 		res = temp;
-		line = get_next_line(fd);
+		line = get_next_line(fd, NULL);
 	}
 	processed_res = ft_remove_first_and_last_line(res);
 	free(res);
@@ -64,6 +64,7 @@ void	put_usage(t_info *info)
 	if (fd < 0)
 	{
 		free(info);
+		put_error("Error: Can't open usage file\n");
 		exit(EXIT_FAILURE);
 	}
 	res = ft_read_all(fd);

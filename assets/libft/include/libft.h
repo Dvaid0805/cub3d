@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:12:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/03 12:35:46 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:38:43 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 char		*ft_itoalong(long n);
 char		*ft_free(char *buffer, char *buf);
-char		*get_next_line(int fd);
+char		*get_next_line(int fd, char **str);
 double		ft_atof(char *str);
 int			ft_isspace(int c);
 
