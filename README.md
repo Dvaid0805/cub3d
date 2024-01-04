@@ -1,7 +1,7 @@
 # 🦦 Cub3D
 Description here!!
 
-## 🤌 Usage
+## 🏚 Usage
 
 Before running the program, ensure you have the necessary libraries installed, depending on your operating system.
 
