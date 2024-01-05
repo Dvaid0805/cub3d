@@ -6,25 +6,11 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:53 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/06/19 15:59:41 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/05 18:05:16 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	**ft_freeresult(char **result)
-{
-	int	i;
-
-	i = 0;
-	while (result[i])
-	{
-		free(result[i]);
-		i++;
-	}
-	free(result);
-	return (NULL);
-}
 
 static int	ft_count_words(const char *str, char c)
 {
@@ -74,7 +60,7 @@ char	**ft_split(char const *s, char c)
 		{
 			result[i++] = ft_copy_word(s, c);
 			if (!result[i - 1])
-				return (ft_freeresult(result));
+				return (ft_split_free(result), NULL);
 			while (*s && *s != c)
 				s++;
 		}
