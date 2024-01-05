@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:12:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/05 17:52:46 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/05 20:09:47 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
+
+typedef struct s_list
+{
+	char			*content;
+	struct s_list	*next;
+}					t_list;
 
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
@@ -63,5 +69,12 @@ double	ft_atof(char *str);
 int		ft_isspace(int c);
 void	ft_split_free(char **src);
 int		ft_get_rgba(int r, int g, int b, int a);
+
+// lists
+t_list		*ft_lstnew(char *content);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
+t_list		*ft_lstlast(t_list *lst);
+void		ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif
