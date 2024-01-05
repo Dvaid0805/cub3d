@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/04 19:17:41 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/05 17:55:35 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,18 @@ typedef struct s_info
 	char 		*so_txt_loc;
 	char 		*we_txt_loc;
 	char 		*ea_txt_loc;
+	int			f_color;
+	int			c_color;
 }				t_info;
 
 void	put_usage(t_info *info);
 void	put_error(char *str);
 
 int	check_map(t_info *info, int fd);
-int	check_filename(char *map);
+int	check_map_extension(char *map);
+
+// get map data
+int	get_texture(char *line, t_info *info);
+int get_color(char *line, t_info *info);
 
 #endif
