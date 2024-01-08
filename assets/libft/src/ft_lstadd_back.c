@@ -6,11 +6,11 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:03:55 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/05 20:03:56 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/08 12:48:31 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {

@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_matrxlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:01:33 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 12:50:32 by dbredykh         ###   ########.fr       */
+/*   Created: 2024/01/08 18:13:12 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/08 18:14:06 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(char *content)
+int		ft_matrxlen(char **m)
 {
-	t_list	*new_list;
+	int i;
 
-	new_list = malloc(sizeof(t_list));
-	if (!new_list)
-		return (NULL);
-	new_list->content = ft_strdup(content);
-	new_list->next = NULL;
-	return (new_list);
+	i = 0;
+	while (m[i])
+		i++;
+	return (i);
 }

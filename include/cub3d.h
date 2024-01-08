@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/05 17:55:35 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:23:00 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_info
 	char 		*ea_txt_loc;
 	int			f_color;
 	int			c_color;
+	int 		**map;
+	int			player_x;
+	int			player_y;
 }				t_info;
 
 void	put_usage(t_info *info);

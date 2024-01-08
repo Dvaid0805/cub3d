@@ -6,11 +6,11 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:03:12 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/05 20:03:12 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/08 12:49:08 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

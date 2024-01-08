@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:12:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/05 20:09:47 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/08 18:43:46 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_isprint(int c);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
 void	*ft_memmove(void *dest, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
-size_t	ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t len);
 size_t	ft_strlcat(char *dest, const char *src, size_t len);
 int		ft_toupper(int c);
@@ -69,6 +69,7 @@ double	ft_atof(char *str);
 int		ft_isspace(int c);
 void	ft_split_free(char **src);
 int		ft_get_rgba(int r, int g, int b, int a);
+int		ft_matrxlen(char **m);
 
 // lists
 t_list		*ft_lstnew(char *content);
