@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 19:25:22 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/08 23:40:14 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,25 +116,41 @@ int is_surrounded_by_ones(char **map)
 	return (1);
 }
 
+t_list *head = NULL;
+
+while (get_next_line(fd, &line))
+	ft_lstadd_back(&head, ft_lstnew(line));
+char **map = create_map(head);
+is_acceptable_values(map);
+is_surrounded_by_ones(map);
+
+int check_map(t_info *info, char *argv)
+{
+	int fd;
+
+	fd = open(argv, O_RDONLY);
+
+}
+
+int	map_parsing(t_info *info, char *argv)
+{
+	if (!check_map_add_data(info ,argv))
+		return (0);
+	if (!check_map)
+		return (0);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_info	*info;
-	int		fd;
 
-	info = (t_info *)malloc(sizeof(t_info));
 	if (argc < 2)
-		put_usage(info);
-	fd = open(argv[1], O_RDONLY);
-	/* if (fd < 0 || check_map_extension(argv[1]))
-		return (free(info), put_error("Error: Wrong map file\n"), 0);
-	if (!check_map(info, fd))
-		return (free(info), 1); */
-	char *line = NULL;
-	t_list *head = NULL;
-	while (get_next_line(fd, &line))
-		ft_lstadd_back(&head, ft_lstnew(line));
-	char **map = ft_lst_to_arr(head);
-	is_acceptable_values(map);
-	is_surrounded_by_ones(map);
+		return (put_usage(), 1);
+	info = (t_info *)malloc(sizeof(t_info));
+	if (!info)
+		return (put_error("Error: Can't allocate memory\n"), 1);
+	if (!map_parsing(info, argv[1]))
+		return (1);
 	return (0);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_data.c                                     :+:      :+:    :+:   */
+/*   check_map_add_data.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 17:07:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/05 17:55:17 by dbredykh         ###   ########.fr       */
+/*   Created: 2024/01/08 23:33:06 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/08 23:34:30 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	*check_color(char *line)
+static int	*str_get_color(char *line)
 {
 	char	**color;
 	char	*c_line;
@@ -37,11 +37,21 @@ static int	*check_color(char *line)
 	return (ft_split_free(color), c_arr);
 }
 
-int	get_color(char *line, t_info *info)
+static int	check_map_extension(char *map)
+{
+	int	len;
+
+	len = ft_strlen(map);
+	return (map[len - 1] != 'b'
+		|| map[len - 2] != 'u'
+		|| map[len - 3] != 'c' || map[len - 4] != '.');
+}
+
+static int	check_map_color(char *line, t_info *info)
 {
 	int	*c_arr;
 
-	c_arr = check_color(line);
+	c_arr = str_get_color(line);
 	if (c_arr != NULL)
 	{
 		if (line[0] == 'F')
@@ -50,11 +60,11 @@ int	get_color(char *line, t_info *info)
 			info->f_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 0);
 	}
 	else
-		return (put_error("Error: Wrong color data\n"), 0);
+		return (0);
 	return (free(c_arr), 1);
 }
 
-int	get_texture(char *line, t_info *info)
+static int	check_map_textures(char *line, t_info *info)
 {
 	int		fd;
 	char	*texture_loc;
@@ -62,7 +72,7 @@ int	get_texture(char *line, t_info *info)
 	texture_loc = ft_str_del_space(line + 2);
 	fd = open(texture_loc, O_RDONLY);
 	if (fd < 0)
-		return (put_error("Error: Cant' open texture\n"), 0);
+		return (0);
 	if (line[0] == 'N' && line[1] == 'O')
 		info->no_txt_loc = texture_loc;
 	else if (line[0] == 'S' && line[1] == 'O')
@@ -71,5 +81,27 @@ int	get_texture(char *line, t_info *info)
 		info->we_txt_loc = texture_loc;
 	else if (line[0] == 'E' && line[1] == 'A')
 		info->ea_txt_loc = texture_loc;
+	return (close(fd), 1);
+}
+
+int check_map_add_data(t_info*info, char *argv)
+{
+	char 	*s;
+	int		fd;
+
+	s = NULL;
+	fd = open(argv, O_RDONLY);
+	if (fd < 0 || check_map_extension(argv))
+		return (put_error("Error: Wrong map file\n"), 0);
+	while (get_next_line(fd, &s))
+	{
+		if ((s[0] == 'N' && s[1] == 'O') || (s[0] == 'S' && s[1] == 'O') || (s[0] == 'W' && s[1] == 'E') || (s[0] == 'E' && s[1] == 'A'))
+			if (!check_map_textures(s, info))
+				return (close(fd),free(s), put_error("Error: Wrong texture data\n"), 0);
+		else if (s[0] == 'F' || s[0] == 'C')
+			if (check_map_color(s, info))
+				return (close(fd), free(s), put_error("Error: Wrong color data\n"), 0);
+		free(s);
+	}
 	return (close(fd), 1);
 }
