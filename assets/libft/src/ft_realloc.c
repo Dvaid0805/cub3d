@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrxlen.c                                      :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 18:13:12 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/09 14:43:27 by dbredykh         ###   ########.fr       */
+/*   Created: 2024/01/09 14:48:50 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/09 15:22:19 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_matrxlen(char **m)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	int i;
+	void	*new_ptr;
 
-	i = 0;
-	while (m[i])
-		i++;
-	return (i);
+	if (ptr == NULL)
+		return (malloc(size));
+	if (!size)
+		return (ptr);
+	new_ptr = malloc(size);
+	ft_memcpy(new_ptr, ptr, size);
+	return (new_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:12:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 23:10:40 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:50:28 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_isprint(int c);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
 void	*ft_memmove(void *dest, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
-int		ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t len);
 size_t	ft_strlcat(char *dest, const char *src, size_t len);
 int		ft_toupper(int c);
@@ -55,7 +55,7 @@ int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_str_del_space(char *str);
-char	*ft_substr(char const *s, int start, int len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
@@ -70,6 +70,7 @@ int		ft_isspace(int c);
 void	ft_split_free(char **src);
 int		ft_get_rgba(int r, int g, int b, int a);
 int		ft_matrxlen(char **m);
+void 	*ft_realloc(void *ptr, size_t size);
 
 // lists
 t_list		*ft_lstnew(char *content);

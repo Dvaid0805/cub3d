@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:33:06 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 23:34:30 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:54:45 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,18 @@ static int	check_map_textures(char *line, t_info *info)
 	return (close(fd), 1);
 }
 
+bool is_texture_or_color(char *s, bool color_check_bool)
+{
+	if ((s[0] == 'N' && s[1] == 'O')
+		|| (s[0] == 'S' && s[1] == 'O')
+		|| (s[0] == 'W' && s[1] == 'E')
+		|| (s[0] == 'E' && s[1] == 'A'))
+		return (1);
+	else if (color_check_bool && (s[0] == 'F' || s[0] == 'C'))
+		return (1);
+	return (0);
+}
+
 int check_map_add_data(t_info*info, char *argv)
 {
 	char 	*s;
@@ -95,10 +107,10 @@ int check_map_add_data(t_info*info, char *argv)
 		return (put_error("Error: Wrong map file\n"), 0);
 	while (get_next_line(fd, &s))
 	{
-		if ((s[0] == 'N' && s[1] == 'O') || (s[0] == 'S' && s[1] == 'O') || (s[0] == 'W' && s[1] == 'E') || (s[0] == 'E' && s[1] == 'A'))
+		if (is_texture_or_color(s, false))
 			if (!check_map_textures(s, info))
 				return (close(fd),free(s), put_error("Error: Wrong texture data\n"), 0);
-		else if (s[0] == 'F' || s[0] == 'C')
+		else if (is_texture_or_color(s, true))
 			if (check_map_color(s, info))
 				return (close(fd), free(s), put_error("Error: Wrong color data\n"), 0);
 		free(s);

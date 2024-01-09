@@ -6,20 +6,22 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 23:40:14 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/09 23:30:33 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// change ply position to 0, and save all info to ifo struct,
+// change ply position to 0, and save all info to ifo struct
+// terminate save map in int **map without errors
+// rewriete exist logick 
 // save player x and y to info struct
 // EA 0
 // NO Pi/2
 // WE Pi
 // SO 3*Pi / 2
 
-void	change_spaces(char *str)
+/* void	change_spaces(char *str)
 {
 	int i;
 
@@ -114,29 +116,83 @@ int is_surrounded_by_ones(char **map)
 		r++;
 	}
 	return (1);
+} */
+
+bool is_valid_map_char(char c)
+{
+	if (c == '0'
+		|| c == '1'
+		|| c == 'N'
+		|| c == 'S'
+		|| c == 'W'
+		|| c == 'E')
+			return (true);
+	return (false);
 }
 
-t_list *head = NULL;
+char *get_valid_map_line(char *line)
+{
+	int i;
+	char *map_line;
 
-while (get_next_line(fd, &line))
-	ft_lstadd_back(&head, ft_lstnew(line));
-char **map = create_map(head);
-is_acceptable_values(map);
-is_surrounded_by_ones(map);
+	map_line = malloc(ft_strlen(line) * sizeof(char));
+	if (!map_line)
+		return (NULL);
+	i = 0;
+	while (i < ft_strlen(line))
+	{
+		if (is_valid_map_char(line[i]))
+			map_line[i] = line[i];
+		else
+			map_line[i] = '2';
+		i++;
+	}
+	return (map_line);
+}
+
+char **read_map(int fd, char *last_line)
+{
+	char **map;
+	char *line;
+	int line_count;
+
+	map = NULL;
+	line = last_line;
+	line_count = 0;
+	while (get_next_line(fd, &line))
+	{
+		map = ft_realloc(map, (line_count + 2) * sizeof(char *));
+		map[line_count] = get_valid_map_line(line);
+		line_count++;
+	}
+	map[line_count] = NULL;
+	return (map);
+}
+
+char **get_map(int fd, char *last_line)
+{
+	return (read_map(fd, last_line));
+}
 
 int check_map(t_info *info, char *argv)
 {
-	int fd;
+	char *line = NULL;
+	int fd = open(argv, O_RDONLY);
 
-	fd = open(argv, O_RDONLY);
-
+	while (get_next_line(fd, &line) && is_texture_or_color(line, true))
+		free(line);
+	char **map = get_map(fd, line);
+	/* if (!is_acceptable_values(map) || !is_surrounded_by_ones(map))
+		return (0); */
+	printf ("%s", map[0]);
+	return (1);
 }
 
 int	map_parsing(t_info *info, char *argv)
 {
-	if (!check_map_add_data(info ,argv))
-		return (0);
-	if (!check_map)
+/* 	if (!check_map_add_data(info ,argv))
+		return (0); */
+	if (!check_map(info, argv))
 		return (0);
 	return (1);
 }
@@ -144,7 +200,6 @@ int	map_parsing(t_info *info, char *argv)
 int	main(int argc, char **argv)
 {
 	t_info	*info;
-
 	if (argc < 2)
 		return (put_usage(), 1);
 	info = (t_info *)malloc(sizeof(t_info));

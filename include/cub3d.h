@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 23:34:56 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:53:56 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	put_usage(void);
 void	put_error(char *str);
 
 int check_map_add_data(t_info*info, char *argv);
+
+bool is_texture_or_color(char *s, bool color_check_bool);
 
 #endif
