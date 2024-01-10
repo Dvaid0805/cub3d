@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:12:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/09 14:50:28 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:43:12 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ft_split_free(char **src);
 int		ft_get_rgba(int r, int g, int b, int a);
 int		ft_matrxlen(char **m);
 void 	*ft_realloc(void *ptr, size_t size);
+void	ft_putstr_fd(char *s, int fd);
 
 // lists
 t_list		*ft_lstnew(char *content);
