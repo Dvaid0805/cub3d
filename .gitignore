@@ -5,3 +5,4 @@
 cub3D
 mlx_frag_shader.c
 mlx_vert_shader.c
+*.dSYM
