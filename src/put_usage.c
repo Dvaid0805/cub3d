@@ -6,13 +6,13 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:53:29 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 23:29:47 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/10 20:16:42 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*ft_remove_first_and_last_line(char *str)
+static char	*ft_remove_first_and_last_line(char *str)
 {
 	char	*start;
 	char	*end;
@@ -31,7 +31,7 @@ char	*ft_remove_first_and_last_line(char *str)
 	return (ft_substr(start, 0, len));
 }
 
-char	*ft_read_all(int fd)
+static char	*ft_read_all(int fd)
 {
 	char	*res;
 	char	*temp;
@@ -62,7 +62,7 @@ void	put_usage(void)
 
 	fd = open("assets/to_read_files/usage.h", O_RDONLY);
 	if (fd < 0)
-		put_error("Error: Can't open usage file\n");
+		put_error(E_INVALID_FILE, 0);
 	res = ft_read_all(fd);
 	printf("%s", res);
 	free(res);
