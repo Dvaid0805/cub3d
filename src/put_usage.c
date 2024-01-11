@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:53:29 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/10 20:16:42 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:57:42 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*ft_read_all(int fd)
 
 	res = ft_calloc(1, sizeof(char));
 	if (!res)
-		return (NULL);
+		return (put_error(E_MEMORY, 0), NULL);
 	line = get_next_line(fd, NULL);
 	while (line)
 	{

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_error.c                                        :+:      :+:    :+:   */
+/*   get_error_message.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 13:51:36 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 09:53:43 by dbredykh         ###   ########.fr       */
+/*   Created: 2024/01/11 09:31:52 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/11 09:59:01 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	put_error(int error_num, char *custom_message)
+const char*	get_error_message(enum e_ErrorCode code)
 {
-	if (custom_message)
-		ft_putstr_fd(custom_message, 2);
-	else
-		ft_putstr_fd(get_error_message(error_num), 2);
+		if (code == E_MEMORY)
+			return ("Error: Can't allocate memory");
+        else if (code == E_OBLIG_DATA)
+            return ("Error: Wrong obligatory data");
+        else if (E_INVALID_FILE)
+            return ("Error: Wrong passed file");
+        else if (E_INVALID_MAP)
+            return ("Error: Invalid map format");
+        else
+            return ("Unknown error");
 }

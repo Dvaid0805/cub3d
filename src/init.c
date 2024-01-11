@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/10 20:15:46 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:58:19 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		return (put_usage(), 1);
 	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
-		return (put_error(E_MEMMORY, 0), 1);
+		return (put_error(E_MEMORY, 0), 1);
 	parser_init_info(info);
 	if (!map_parsing(info, argv[1]))
 		return (1);

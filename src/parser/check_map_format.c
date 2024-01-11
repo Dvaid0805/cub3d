@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/10 20:36:36 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:58:42 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_is_surrounded_by_ones(char **map)
 			if (map[row][col] == '0')
 				if (!is_map_ages_ones(map, row, col)
 					|| !is_map_point_by_ones(map, row, col))
-					return (put_error(0, "is_map_point func\n"), 0);
+					return (put_error(0, "UNEXPECTED ERROR\n"), 0);
 			col++;
 		}
 		row++;
@@ -69,7 +69,7 @@ static char	*get_map_line(char *line)
 	len = ft_strlen(line);
 	map_line = malloc(len * sizeof(char) + 1);
 	if (!map_line)
-		return (NULL);
+		return (put_error(E_MEMORY, 0), NULL);
 	i = 0;
 	while (i < len)
 	{
