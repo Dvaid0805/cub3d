@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:42:07 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/09 14:45:28 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:05:39 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = ft_strlen(s) - start;
 	dest = malloc(sizeof(char) * (len + 1));
 	if (!dest)
-		return (NULL);
+		return (put_error(E_MEMORY, 0), NULL);
 	i = 0;
 	while (i < len)
 	{
