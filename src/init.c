@@ -6,13 +6,13 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 09:58:19 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:04:34 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void parser_init_info(t_info *info)
+static void	parser_init_info(t_info *info)
 {
 	info->map = ft_calloc(sizeof(char *), 1);
 	info->no_txt_loc = NULL;
@@ -28,7 +28,7 @@ static void parser_init_info(t_info *info)
 
 int	main(int argc, char **argv)
 {
-	t_info *info;
+	t_info	*info;
 
 	if (argc < 2)
 		return (put_usage(), 1);

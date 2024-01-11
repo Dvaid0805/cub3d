@@ -6,15 +6,15 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:13:12 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/09 14:43:27 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:06:59 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_matrxlen(char **m)
+int	ft_matrxlen(char **m)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (m[i])

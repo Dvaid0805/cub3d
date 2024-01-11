@@ -6,13 +6,13 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:51:37 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/05 17:51:47 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:06:35 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_get_rgba(int r, int g, int b, int a)
+int	ft_get_rgba(int r, int g, int b, int a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
