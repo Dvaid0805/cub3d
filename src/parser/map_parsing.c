@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 09:40:08 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:56:42 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ double	get_player_direction(char c)
 	return (-1);
 }
 
-static int	check_map_extension(char *map)
+static int	is_valid_map_extension(char *map)
 {
 	int	len;
 
 	len = ft_strlen(map);
-	return (map[len - 1] != 'b'
-		|| map[len - 2] != 'u'
-		|| map[len - 3] != 'c' || map[len - 4] != '.');
+	return (map[len - 1] == 'b' && map[len - 2] == 'u'
+		&& map[len - 3] == 'c' && map[len - 4] == '.');
 }
 
 int	map_parsing(t_info *info, char *argv)
@@ -42,7 +41,7 @@ int	map_parsing(t_info *info, char *argv)
 
 	fd = open(argv, O_RDONLY);
 	line = NULL;
-	if (fd < 0 || check_map_extension(argv))
+	if (fd < 0 || !is_valid_map_extension(argv))
 		return (put_error(E_INVALID_FILE, 0), 0);
 	if (!check_map_oblig_data(info, fd, line))
 		return (put_error(E_OBLIG_DATA, 0), close(fd), free(line), 0);
