@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:39:34 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/08 13:04:20 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:53:00 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static char	*ft_next(char *buffer)
 		return (NULL);
 	}
 	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	if (!line)
+		return (put_error(E_MEMORY, 0), NULL);
 	i++;
 	j = 0;
 	while (buffer[i])
@@ -46,6 +48,8 @@ static char	*ft_line(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
+	if (!line)
+		return (put_error(E_MEMORY, 0), NULL);
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
@@ -65,6 +69,8 @@ static char	*read_file(int fd, char *res)
 	if (!res)
 		res = ft_calloc(1, 1);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+		return (put_error(E_MEMORY, 0), NULL);
 	byte_read = 1;
 	while (byte_read > 0)
 	{

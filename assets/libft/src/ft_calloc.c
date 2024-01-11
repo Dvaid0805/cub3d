@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 17:12:35 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/06/19 15:57:12 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:52:02 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t count, size_t size)
 	len = count * size;
 	str = malloc(len);
 	if (!str)
-		return (NULL);
+		return (put_error(E_MEMORY, 0), NULL);
 	ft_bzero(str, len);
 	return (str);
 }

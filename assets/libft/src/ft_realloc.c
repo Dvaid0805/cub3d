@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:48:50 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/09 15:22:19 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:52:33 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_realloc(void *ptr, size_t size)
 	if (!size)
 		return (ptr);
 	new_ptr = malloc(size);
+	if (!new_ptr)
+		return (put_error(E_MEMORY, 0), NULL);
 	ft_memcpy(new_ptr, ptr, size);
 	return (new_ptr);
 }
