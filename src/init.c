@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 10:04:34 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:59:01 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 static void	parser_init_info(t_info *info)
 {
 	info->map = ft_calloc(sizeof(char *), 1);
+	if (!info->map)
+		unplanned_exit(info, E_MEMORY);
+	info->map[0] = NULL;
 	info->no_txt_loc = NULL;
 	info->so_txt_loc = NULL;
 	info->we_txt_loc = NULL;
@@ -36,7 +39,7 @@ int	main(int argc, char **argv)
 	if (!info)
 		return (put_error(E_MEMORY, 0), 1);
 	parser_init_info(info);
-	if (!map_parsing(info, argv[1]))
-		return (1);
+	map_parsing(info, argv[1]);
+	free_parser_data(info);
 	return (0);
 }

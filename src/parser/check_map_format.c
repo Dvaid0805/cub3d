@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 09:58:42 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:15:04 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ static char	**get_map(int fd, char *last_line)
 	line_count = 0;
 	while (line)
 	{
+		// first calloc free before realloc
 		temp_line = get_next_line(fd, NULL);
 		map = ft_realloc(map, (line_count + 2) * sizeof(char *));
 		map[line_count] = get_map_line(line);

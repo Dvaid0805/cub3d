@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 15:31:34 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:05:06 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct s_info
 	double		player_dir;
 }				t_info;
 
+// prevent leeks
+void		free_parser_data(t_info *info);
+
 // additional functions
 void		put_usage(void);
 const char	*get_error_message(enum e_ErrorCode code);
@@ -53,7 +56,7 @@ void		put_error(int error_num, char *custom_message);
 void		unplanned_exit(t_info *info, int error_code);
 
 // map_parsing.c
-int			map_parsing(t_info *info, char *argv);
+void		map_parsing(t_info *info, char *argv);
 int			check_map_oblig_data(t_info *info, int fd, char *line);
 int			check_map_format(t_info *info, int fd, char *line);
 double		get_player_direction(char c);
@@ -66,5 +69,5 @@ bool		is_valid_map_char(char c);
 bool		is_enough_info_oblig_data(t_info *info);
 bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
-
+	
 #endif
