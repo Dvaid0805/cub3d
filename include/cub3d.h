@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 09:51:39 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:31:34 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ typedef struct s_info
 	double		player_dir;
 }				t_info;
 
+// additional functions
 void		put_usage(void);
 const char	*get_error_message(enum e_ErrorCode code);
 void		put_error(int error_num, char *custom_message);
+void		unplanned_exit(t_info *info, int error_code);
 
 // map_parsing.c
 int			map_parsing(t_info *info, char *argv);
