@@ -6,13 +6,13 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 19:15:04 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:41:12 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	check_is_surrounded_by_ones(char **map)
+int	check_is_surrounded_by_ones(char **map)
 {
 	int	row;
 	int	col;
@@ -27,7 +27,7 @@ static int	check_is_surrounded_by_ones(char **map)
 			if (map[row][col] == '0')
 				if (!is_map_ages_ones(map, row, col)
 					|| !is_map_point_by_ones(map, row, col))
-					return (put_error(0, "UNEXPECTED ERROR\n"), 0);
+					return (put_error(0, "Error: No surrounded by 1's\n"), 0);
 			col++;
 		}
 		row++;
@@ -35,7 +35,7 @@ static int	check_is_surrounded_by_ones(char **map)
 	return (1);
 }
 
-static int	check_acceptable_map_values(t_info *info, char **m)
+int	check_acceptable_map_values(t_info *info, char **m)
 {
 	int	row;
 	int	col;
@@ -56,7 +56,7 @@ static int	check_acceptable_map_values(t_info *info, char **m)
 		row++;
 	}
 	if (info->player_x == -1)
-		return (0);
+		return (put_error(0, "Error: The player was not found\n"), 0);
 	return (1);
 }
 
@@ -92,7 +92,6 @@ static char	**get_map(int fd, char *last_line)
 	line_count = 0;
 	while (line)
 	{
-		// first calloc free before realloc
 		temp_line = get_next_line(fd, NULL);
 		map = ft_realloc(map, (line_count + 2) * sizeof(char *));
 		map[line_count] = get_map_line(line);
@@ -111,12 +110,15 @@ int	check_map_format(t_info *info, int fd, char *line)
 	map = NULL;
 	while (get_next_line(fd, &line) && is_all_spaces(line))
 		free(line);
+	if (line == NULL)
+		return (close(fd), put_error(0, "Error: No map\n"), 0);
 	map = get_map(fd, line);
 	if (!map)
-		return (0);
+		return (free(line), close(fd), 0);
 	if (!check_acceptable_map_values(info, map)
 		|| !check_is_surrounded_by_ones(map))
-		return (0);
+		return (close(fd), ft_split_free(map), 0);
+	free(info->map);
 	info->map = map;
 	return (1);
 }

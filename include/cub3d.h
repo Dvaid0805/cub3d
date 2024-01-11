@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:05:06 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:43:12 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ bool		is_valid_map_char(char c);
 bool		is_enough_info_oblig_data(t_info *info);
 bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
-	
+
 #endif

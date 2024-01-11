@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/10 20:40:28 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:16:21 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ bool	is_acceptable_map_value(t_info *info, char **map, int row, int col)
 				map[row][col] = '0';
 			}
 			else
-				return (false);
+				return (put_error(0, "Error: more than 1 player\n"), false);
 		}
 		return (true);
 	}
-	return (false);
+	return (put_error(0, "Error: Found unacceptable value\n"), false);
 }
 
 bool	is_texture_or_color(char *s, bool color_check_bool)

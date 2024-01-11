@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:02:28 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:19:38 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	map_parsing(t_info *info, char *argv)
 		unplanned_exit(info, E_OBLIG_DATA);
 	if (!is_enough_info_oblig_data(info))
 		unplanned_exit(info, E_OBLIG_DATA);
-	/* if (!check_map_format(info, fd, line))
-		return (put_error(E_INVALID_MAP, 0), 0); */
+	if (!check_map_format(info, fd, line))
+		unplanned_exit(info, E_INVALID_MAP);
 }
