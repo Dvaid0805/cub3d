@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:43:12 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:59:35 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,13 @@
 
 # include "../assets/MLX42/include/MLX42/MLX42.h"
 # include "../assets/libft/include/libft.h"
+# include "cub3d_defines.h"
+# include "cub3d_structs.h"
 # include <math.h>
 # include <memory.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define SIZE 750
-
-enum	e_ErrorCode
-{
-	E_MEMORY = 1,
-	E_OBLIG_DATA = 2,
-	E_INVALID_FILE = 3,
-	E_INVALID_MAP = 4
-};
-
-typedef struct s_info
-{
-	mlx_t		*mlx;
-	mlx_image_t	*g_img;
-	char		*no_txt_loc;
-	char		*so_txt_loc;
-	char		*we_txt_loc;
-	char		*ea_txt_loc;
-	int			f_color;
-	int			c_color;
-	char		**map;
-	int			player_x;
-	int			player_y;
-	double		player_dir;
-}				t_info;
 
 // prevent leeks
 void		free_parser_data(t_info *info);
@@ -70,4 +47,6 @@ bool		is_enough_info_oblig_data(t_info *info);
 bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
 
+// dbg_functions.c
+void		dbg_file_data(t_info *info);
 #endif

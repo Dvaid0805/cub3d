@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 19:59:01 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:20:44 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 		return (put_error(E_MEMORY, 0), 1);
 	parser_init_info(info);
 	map_parsing(info, argv[1]);
+	dbg_file_data(info);
 	free_parser_data(info);
 	return (0);
 }

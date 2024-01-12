@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_bool_funcs1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:16:21 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/12 21:38:25 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ bool	is_acceptable_map_value(t_info *info, char **map, int row, int col)
 			if (info->player_x == -1 && info->player_y == -1)
 			{
 				info->player_dir = get_player_direction(map[row][col]);
-				info->player_x = row;
-				info->player_y = col;
+				info->player_x = row * C_SIZE + C_SIZE / 2;
+				info->player_y = col * C_SIZE + C_SIZE / 2;
 				map[row][col] = '0';
 			}
 			else
@@ -38,7 +38,7 @@ bool	is_texture_or_color(char *s, bool color_check_bool)
 {
 	if (color_check_bool && (s[0] == 'F' || s[0] == 'C'))
 		return (1);
-	else if ((s[0] == 'N' && s[1] == 'O')
+	else if ((s[0] == 'N' && s[1] == 'O')   //   if (ft_strncmp(s, "NO", 2) == 0)
 		|| (s[0] == 'S' && s[1] == 'O')
 		|| (s[0] == 'W' && s[1] == 'E')
 		|| (s[0] == 'E' && s[1] == 'A'))
