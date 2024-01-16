@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/12 19:59:35 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:37:18 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,29 @@
 # include <unistd.h>
 
 // prevent leeks
-void		free_parser_data(t_info *info);
+void		free_parser_data(t_parser *parser);
 
 // additional functions
 void		put_usage(void);
 const char	*get_error_message(enum e_ErrorCode code);
 void		put_error(int error_num, char *custom_message);
-void		unplanned_exit(t_info *info, int error_code);
+void		unplanned_exit(t_parser *parser, int error_code);
 
 // map_parsing.c
-void		map_parsing(t_info *info, char *argv);
-int			check_map_oblig_data(t_info *info, int fd, char *line);
-int			check_map_format(t_info *info, int fd, char *line);
+void		map_parsing(t_parser *parser, char *argv);
+int			check_map_oblig_data(t_parser *parser, int fd, char *line);
+int			check_map_format(t_parser *parser, int fd, char *line);
 double		get_player_direction(char c);
 
 // is_bool_functions.c
-bool		is_acceptable_map_value(t_info *info, char **map, int row, int col);
+bool		is_acceptable_map_value(t_parser *parser, char **map, int row, int col);
 bool		is_texture_or_color(char *s, bool color_check_bool);
 bool		is_all_spaces(const char *str);
 bool		is_valid_map_char(char c);
-bool		is_enough_info_oblig_data(t_info *info);
+bool		is_enough_parser_oblig_data(t_parser *parser);
 bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
 
 // dbg_functions.c
-void		dbg_file_data(t_info *info);
+void		dbg_file_data(t_parser *parser);
 #endif

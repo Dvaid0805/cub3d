@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:19:38 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:35:05 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	is_valid_map_extension(char *map)
 		&& map[len - 3] == 'c' && map[len - 4] == '.');
 }
 
-void	map_parsing(t_info *info, char *argv)
+void	map_parsing(t_parser *parser, char *argv)
 {
 	int		fd;
 	char	*line;
@@ -42,11 +42,11 @@ void	map_parsing(t_info *info, char *argv)
 	fd = open(argv, O_RDONLY);
 	line = NULL;
 	if (fd < 0 || !is_valid_map_extension(argv))
-		unplanned_exit(info, E_INVALID_FILE);
-	if (!check_map_oblig_data(info, fd, line))
-		unplanned_exit(info, E_OBLIG_DATA);
-	if (!is_enough_info_oblig_data(info))
-		unplanned_exit(info, E_OBLIG_DATA);
-	if (!check_map_format(info, fd, line))
-		unplanned_exit(info, E_INVALID_MAP);
+		unplanned_exit(parser, E_INVALID_FILE);
+	if (!check_map_oblig_data(parser, fd, line))
+		unplanned_exit(parser, E_OBLIG_DATA);
+	if (!is_enough_parser_oblig_data(parser))
+		unplanned_exit(parser, E_OBLIG_DATA);
+	if (!check_map_format(parser, fd, line))
+		unplanned_exit(parser, E_INVALID_MAP);
 }

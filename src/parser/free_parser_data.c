@@ -6,22 +6,22 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:12:46 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:04:37 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:34:45 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_parser_data(t_info *info)
+void	free_parser_data(t_parser *parser)
 {
-	if (info->no_txt_loc)
-		free(info->no_txt_loc);
-	if (info->so_txt_loc)
-		free(info->so_txt_loc);
-	if (info->we_txt_loc)
-		free(info->we_txt_loc);
-	if (info->ea_txt_loc)
-		free(info->ea_txt_loc);
-	ft_split_free(info->map);
-	free(info);
+	if (parser->no_txt_loc)
+		free(parser->no_txt_loc);
+	if (parser->so_txt_loc)
+		free(parser->so_txt_loc);
+	if (parser->we_txt_loc)
+		free(parser->we_txt_loc);
+	if (parser->ea_txt_loc)
+		free(parser->ea_txt_loc);
+	ft_split_free(parser->map);
+	free(parser);
 }
