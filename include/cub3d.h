@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 14:57:35 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:10:31 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void		init(char **argv);
 
 // ----------------- PREVENT LEEKS ----------------- //
 void		free_parser(t_parser *parser);
+void		free_info(t_info *info);
 void		general_free(t_info *info);
 
 // ----------------- PARSER ----------------- //
@@ -54,4 +55,11 @@ bool		is_map_ages_ones(char **map, int r, int c);
 
 // dbg_functions.c
 void		dbg_file_data(t_parser *parser);
+
+// ----------------- GRAPHIC ----------------- //
+// Draw.c
+void		fill_floor_ceilings(t_info *info);
+void		graphic_init(t_info *info);
+// Hook.c
+void		ft_hook(void* param);
 #endif

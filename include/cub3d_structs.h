@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/16 14:39:08 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:59:47 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,16 @@ typedef struct s_info
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
+	mlx_texture_t	*no_txt;
+	mlx_texture_t	*so_txt;
+	mlx_texture_t	*we_txt;
+	mlx_texture_t	*ea_txt;
+	int				f_color;
+	int				c_color;
 	struct s_player	*player;
 	struct s_parser	*parser;
 	struct s_ray	*ray;
+	char			**map;
 }				t_info;
 
 #endif

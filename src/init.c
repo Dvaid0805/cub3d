@@ -6,13 +6,44 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 16:27:38 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:11:16 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_info	*init_info(void)
+static void steal_parser_data(t_info *info)
+{
+	info->no_txt = mlx_load_png(info->parser->no_txt_loc);
+	info->so_txt = mlx_load_png(info->parser->so_txt_loc);
+	info->we_txt = mlx_load_png(info->parser->we_txt_loc);
+	info->ea_txt = mlx_load_png(info->parser->ea_txt_loc);
+	info->map = info->parser->map;
+	info->player->player_x = info->parser->player_x;
+	info->player->player_y = info->parser->player_y;
+	info->player->player_dir = info->parser->player_dir;
+	info->f_color = info->parser->f_color;
+	info->c_color = info->parser->c_color;
+	free(info->parser->no_txt_loc);
+	free(info->parser->so_txt_loc);
+	free(info->parser->we_txt_loc);
+	free(info->parser->ea_txt_loc);
+	free(info->parser);
+	info->parser = NULL;
+}
+
+static void init_structs(t_info *info)
+{
+	info->player = (t_player *)malloc(sizeof(t_player));
+	if (!info->player)
+		unplanned_exit(info, E_MEMORY);
+	info->ray = (t_ray *)malloc(sizeof(t_ray));
+	if (!info->ray)
+		unplanned_exit(info, E_MEMORY);
+	steal_parser_data(info);
+}
+
+static t_info	*initial_info(void)
 {
 	t_info *info;
 
@@ -26,49 +57,20 @@ t_info	*init_info(void)
 	info->ray = NULL;
 	info->mlx = NULL;
 	info->img = NULL;
+	info->no_txt = NULL;
+	info->so_txt = NULL;
+	info->we_txt = NULL;
+	info->ea_txt = NULL;
 	return (info);
-}
-
-void ft_hook(void* param)
-{
-	mlx_t *mlx;
-
-	mlx = param;
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
-}
-
-void mlx_init_struct(t_info *info)
-{
-	info->mlx = mlx_init(SCR_W, SCR_H, "cub3D", false);
-	if (!info->mlx)
-		unplanned_exit(info, E_MLX);
-	info->img = mlx_new_image(info->mlx, SCR_W, SCR_H);
-	if (!info->img)
-		unplanned_exit(info, E_MLX);
-	mlx_image_to_window(info->mlx, info->img, 0, 0);
-	mlx_loop_hook(info->mlx, ft_hook, info->mlx);
-	mlx_loop(info->mlx);
-}
-
-void init_structs(t_info *info)
-{
-	info->player = (t_player *)malloc(sizeof(t_player));
-	if (!info->player)
-		unplanned_exit(info, E_MEMORY);
-	info->ray = (t_ray *)malloc(sizeof(t_ray));
-	if (!info->ray)
-		unplanned_exit(info, E_MEMORY);
-	mlx_init_struct(info);
 }
 
 void init(char **argv)
 {
 	t_info *info;
 
-	info = init_info();
+	info = initial_info();
 	parser_init(info, argv[1]);
 	init_structs(info);
-	dbg_file_data(info->parser);
+	graphic_init(info);
 	general_free(info);
 }
