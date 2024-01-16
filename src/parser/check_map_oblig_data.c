@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:33:06 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 11:34:37 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:14:21 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static int	check_map_color(char *line, t_parser *parser)
 	if (!c_arr)
 		return (0);
 	if (line[0] == 'F')
-		parser->c_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 0);
+		parser->c_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 255);
 	else if (line[0] == 'C')
-		parser->f_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 0);
+		parser->f_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 255);
 	return (free(c_arr), 1);
 }
 
