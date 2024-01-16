@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 11:37:18 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:55:23 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+// ----------------- PARSER ----------------- //
 // prevent leeks
 void		free_parser_data(t_parser *parser);
 
 // additional functions
+void		parser_init_data(t_parser *parser);
 void		put_usage(void);
 const char	*get_error_message(enum e_ErrorCode code);
 void		put_error(int error_num, char *custom_message);

@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 11:35:05 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:54:36 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	map_parsing(t_parser *parser, char *argv)
 
 	fd = open(argv, O_RDONLY);
 	line = NULL;
+	parser_init_data(parser);
 	if (fd < 0 || !is_valid_map_extension(argv))
 		unplanned_exit(parser, E_INVALID_FILE);
 	if (!check_map_oblig_data(parser, fd, line))
