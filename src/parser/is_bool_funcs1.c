@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/12 21:38:25 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:20:18 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ bool	is_acceptable_map_value(t_info *info, char **map, int row, int col)
 		{
 			if (info->player_x == -1 && info->player_y == -1)
 			{
-				info->player_dir = get_player_direction(map[row][col]);
-				info->player_x = row * C_SIZE + C_SIZE / 2;
-				info->player_y = col * C_SIZE + C_SIZE / 2;
+				info->player_angle = get_player_direction(map[row][col]);
+				info->player_x = row + 0.5;
+				info->player_y = col + 0.5;
 				map[row][col] = '0';
 			}
 			else

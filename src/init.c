@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/12 19:20:44 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:21:40 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	parser_init_info(t_info *info)
 	info->c_color = -1;
 	info->player_x = -1;
 	info->player_y = -1;
-	info->player_dir = -1;
+	info->player_angle = -1;
 }
 
 int	main(int argc, char **argv)
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	parser_init_info(info);
 	map_parsing(info, argv[1]);
 	dbg_file_data(info);
+	ray_casting(info);
 	free_parser_data(info);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/15 13:15:06 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:39:21 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define SCR_H 600
 # define SCR_W 1024
-# define C_SIZE 8
+# define POV_ANGLE (M_PI / 3)
 
 enum	e_ErrorCode
 {

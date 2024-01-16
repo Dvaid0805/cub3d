@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/15 13:03:08 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:58:14 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,21 @@
 
 typedef struct s_ray
 {
-	double		dir_x;
-	double		dir_y;
-	double		draw_dist;
-	double		delta_dist_y;
-	
+	double		dist_x;
+	double		dist_y;
+	double		cx_x;
+	double		cx_y;
+	double		cy_x;
+	double		cy_y;
+	double		start;
+	double		height;
 }				t_ray;
 
 typedef struct s_info
 {
 	mlx_t		*mlx;
 	mlx_image_t	*g_img;
+	
 	char		*no_txt_loc;
 	char		*so_txt_loc;
 	char		*we_txt_loc;
@@ -37,7 +41,7 @@ typedef struct s_info
 	char		**map;
 	int			player_x;
 	int			player_y;
-	double		player_dir;
+	double		player_angle;
 }				t_info;
 
 #endif

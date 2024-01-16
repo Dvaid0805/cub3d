@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/12 19:59:35 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:17:34 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ bool		is_enough_info_oblig_data(t_info *info);
 bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
 
+// ray_casting.c
+void		ray_casting(t_info *info);
+
+// drawing_walls.c
+void		draw_col(t_info *info, t_ray *ray, int i);
+
 // dbg_functions.c
 void		dbg_file_data(t_info *info);
+void		dbg_print_ray(t_ray *ray, int index);
 #endif
