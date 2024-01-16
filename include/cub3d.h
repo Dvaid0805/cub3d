@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 11:55:23 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:57:35 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,22 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// ----------------- PARSER ----------------- //
-// prevent leeks
-void		free_parser_data(t_parser *parser);
+// ----------------- INIT ----------------- //
+void		init(char **argv);
 
+// ----------------- PREVENT LEEKS ----------------- //
+void		free_parser(t_parser *parser);
+void		general_free(t_info *info);
+
+// ----------------- PARSER ----------------- //
 // additional functions
-void		parser_init_data(t_parser *parser);
 void		put_usage(void);
 const char	*get_error_message(enum e_ErrorCode code);
 void		put_error(int error_num, char *custom_message);
-void		unplanned_exit(t_parser *parser, int error_code);
+void		unplanned_exit(t_info *info, int error_code);
 
 // map_parsing.c
-void		map_parsing(t_parser *parser, char *argv);
+void		parser_init(t_info *info, char *argv);
 int			check_map_oblig_data(t_parser *parser, int fd, char *line);
 int			check_map_format(t_parser *parser, int fd, char *line);
 double		get_player_direction(char c);

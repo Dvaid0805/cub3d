@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/16 10:25:19 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:26:04 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ enum	e_ErrorCode
 	E_MEMORY = 1,
 	E_OBLIG_DATA = 2,
 	E_INVALID_FILE = 3,
-	E_INVALID_MAP = 4
+	E_INVALID_MAP = 4,
+	E_MLX = 5,
 };
 
 #endif
