@@ -6,13 +6,13 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 11:34:23 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:00:13 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_is_surrounded_by_ones(char **map)
+static int	check_is_surrounded_by_ones(char **map)
 {
 	int	row;
 	int	col;
@@ -35,7 +35,7 @@ int	check_is_surrounded_by_ones(char **map)
 	return (1);
 }
 
-int	check_acceptable_map_values(t_parser *parser, char **m)
+static int	check_acceptable_map_values(t_parser *parser, char **m)
 {
 	int	row;
 	int	col;
@@ -115,6 +115,7 @@ int	check_map_format(t_parser *parser, int fd, char *line)
 	map = get_map(fd, line);
 	if (!map)
 		return (free(line), close(fd), 0);
+	reverse_map(map);
 	if (!check_acceptable_map_values(parser, map)
 		|| !check_is_surrounded_by_ones(map))
 		return (close(fd), ft_split_free(map), 0);

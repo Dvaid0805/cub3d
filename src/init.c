@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 14:00:29 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:57:21 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static t_info	*initial_info(void)
 	info->so_txt = NULL;
 	info->we_txt = NULL;
 	info->ea_txt = NULL;
+	info->map = NULL;
 	return (info);
 }
 
@@ -72,5 +73,6 @@ void init(char **argv)
 	parser_init(info, argv[1]);
 	init_structs(info);
 	graphic_init(info);
+	dbg_file_data(info);
 	general_free(info);
 }

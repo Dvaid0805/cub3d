@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 11:54:51 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:46:17 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		unplanned_exit(t_info *info, int error_code);
 void		parser_init(t_info *info, char *argv);
 int			check_map_oblig_data(t_parser *parser, int fd, char *line);
 int			check_map_format(t_parser *parser, int fd, char *line);
+void 		reverse_map(char **map);
 double		get_player_direction(char c);
 
 // is_bool_functions.c

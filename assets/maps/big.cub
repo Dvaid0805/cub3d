@@ -3,8 +3,8 @@ SO assets/textures/south.png
 WE assets/textures/west.png
 EA assets/textures/east.png
 
-F 0,255,0
-C 0,0,255
+C 0,87,183
+F 255,215,0
 
         1111111111111111111111111
         1000000000110000000000001

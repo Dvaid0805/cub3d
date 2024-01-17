@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 11:34:53 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:56:42 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ bool	is_acceptable_map_value(t_parser *parser, char **map, int row, int col)
 			if (parser->player_x == -1 && parser->player_y == -1)
 			{
 				parser->player_dir = get_player_direction(map[row][col]);
-				parser->player_x = row + 0.5;
-				parser->player_y = col + 0.5;
+				parser->player_x = row + 0.5; //Maybe it's in vice versa
+				parser->player_y = col + 0.5; //Maybe it's in vice versa
 				map[row][col] = '0';
 			}
 			else
@@ -38,7 +38,7 @@ bool	is_texture_or_color(char *s, bool color_check_bool)
 {
 	if (color_check_bool && (s[0] == 'F' || s[0] == 'C'))
 		return (1);
-	else if ((s[0] == 'N' && s[1] == 'O')   //   if (ft_strncmp(s, "NO", 2) == 0)
+	else if ((s[0] == 'N' && s[1] == 'O')
 		|| (s[0] == 'S' && s[1] == 'O')
 		|| (s[0] == 'W' && s[1] == 'E')
 		|| (s[0] == 'E' && s[1] == 'A'))
