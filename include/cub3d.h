@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 18:17:34 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:15:19 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void		draw_col(t_info *info, t_ray *ray, int i);
 
 // dbg_functions.c
 void		dbg_file_data(t_info *info);
-void		dbg_print_ray(t_ray *ray, int index);
+void		dbg_print_ray(t_ray *ray);
 #endif

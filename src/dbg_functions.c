@@ -21,20 +21,11 @@ void	dbg_file_data(t_info *info)
 	}
 }
 
-void	dbg_print_ray(t_ray *ray, int index)
+void	dbg_print_ray(t_ray *ray)
 {
-	printf("ray num: %d\n", index);
-	if (ray->dist_x < ray->dist_y)
-	{
-		printf("lenght: %f\n", ray->dist_x);
-		printf("collision point x: %f\n", ray->cy_x);
-		printf("collision point y: %f\n", ray->cy_y);
-	}
-	else
-	{
-		printf("lenght: %f\n", ray->dist_y);
-		printf("collision point x: %f\n", ray->cx_x);
-		printf("collision point y: %f\n", ray->cx_y);
-	}
-	printf("\n");
+	printf("ray: %d    angle: %f\n", ray->start, ray->angle);
+	printf("X  lenght: %f  ", ray->dist_x);
+	printf("coll. point x: %f  %f       ", ray->cx_x, ray->cx_y);
+	printf("Y  lenght: %f  ", ray->dist_y);
+	printf("coll. point y: %f  %f\n\n", ray->cy_x, ray->cy_y);
 }

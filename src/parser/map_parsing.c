@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:19:38 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:05:32 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ double	get_player_direction(char c)
 	if (c == 'E')
 		return (0);
 	else if (c == 'N')
-		return (M_PI / 2.0);
+		return ((3 * M_PI) / 2.0);
 	else if (c == 'W')
 		return (M_PI);
 	else if (c == 'S')
-		return ((3 * M_PI) / 2.0);
+		return (M_PI / 2.0);
 	return (-1);
 }
 
