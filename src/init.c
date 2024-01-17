@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:48:13 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:46:02 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void steal_parser_data(t_info *info)
 	info->so_txt = mlx_load_png(info->parser->so_txt_loc);
 	info->we_txt = mlx_load_png(info->parser->we_txt_loc);
 	info->ea_txt = mlx_load_png(info->parser->ea_txt_loc);
+	free(info->map);
 	info->map = info->parser->map;
 	info->player->player_x = info->parser->player_x;
 	info->player->player_y = info->parser->player_y;
@@ -61,7 +62,8 @@ static t_info	*initial_info(void)
 	info->so_txt = NULL;
 	info->we_txt = NULL;
 	info->ea_txt = NULL;
-	info->map = NULL;
+	info->map = ft_calloc(1, sizeof(char *));
+	info->map[0] = NULL;
 	info->f_color = -1;
 	info->c_color = -1;
 	return (info);

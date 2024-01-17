@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:20:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 17:58:12 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:44:32 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	free_parser(t_parser *parser)
 		free(parser->ea_txt_loc);
 	parser->ea_txt_loc = NULL;
 	ft_split_free(parser->map);
-	parser->map = NULL;
 	free(parser);
 }
 
