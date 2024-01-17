@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:33:06 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:04:13 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:00:43 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	*str_get_color(char *line)
 	return (free(c_line), ft_split_free(color), c_arr);
 }
 
-static int	check_map_color(char *line, t_info *info)
+static int	check_map_color(char *line, t_parser *parser)
 {
 	int	*c_arr;
 
@@ -46,13 +46,13 @@ static int	check_map_color(char *line, t_info *info)
 	if (!c_arr)
 		return (0);
 	if (line[0] == 'F')
-		info->c_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 0);
+		parser->f_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 255);
 	else if (line[0] == 'C')
-		info->f_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 0);
+		parser->c_color = ft_get_rgba(c_arr[0], c_arr[1], c_arr[2], 255);
 	return (free(c_arr), 1);
 }
 
-static int	check_map_textures(char *line, t_info *info)
+static int	check_map_textures(char *line, t_parser *parser)
 {
 	int		fd;
 	char	*texture_loc;
@@ -62,28 +62,28 @@ static int	check_map_textures(char *line, t_info *info)
 	if (fd < 0)
 		return (free(texture_loc), 0);
 	if (line[0] == 'N' && line[1] == 'O')
-		info->no_txt_loc = texture_loc;
+		parser->no_txt_loc = texture_loc;
 	else if (line[0] == 'S' && line[1] == 'O')
-		info->so_txt_loc = texture_loc;
+		parser->so_txt_loc = texture_loc;
 	else if (line[0] == 'W' && line[1] == 'E')
-		info->we_txt_loc = texture_loc;
+		parser->we_txt_loc = texture_loc;
 	else if (line[0] == 'E' && line[1] == 'A')
-		info->ea_txt_loc = texture_loc;
+		parser->ea_txt_loc = texture_loc;
 	return (close(fd), 1);
 }
 
-int	check_map_oblig_data(t_info *info, int fd, char *line)
+int	check_map_oblig_data(t_parser *parser, int fd, char *line)
 {
-	while (!is_enough_info_oblig_data(info) && get_next_line(fd, &line))
+	while (!is_enough_parser_oblig_data(parser) && get_next_line(fd, &line))
 	{
 		if (is_texture_or_color(line, false))
 		{
-			if (!check_map_textures(line, info))
+			if (!check_map_textures(line, parser))
 				return (free(line), close(fd), 0);
 		}
 		else if (is_texture_or_color(line, true))
 		{
-			if (!check_map_color(line, info))
+			if (!check_map_color(line, parser))
 				return (free(line), close(fd), 0);
 		}
 		free(line);

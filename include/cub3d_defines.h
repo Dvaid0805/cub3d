@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/16 14:39:21 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:32:15 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ enum	e_ErrorCode
 	E_MEMORY = 1,
 	E_OBLIG_DATA = 2,
 	E_INVALID_FILE = 3,
-	E_INVALID_MAP = 4
+	E_INVALID_MAP = 4,
+	E_MLX = 5,
 };
 
 #endif

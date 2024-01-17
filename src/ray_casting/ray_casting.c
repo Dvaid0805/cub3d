@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/17 13:59:33 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:47:46 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	calc_collision_y(t_info *info, t_ray *ray)
 {
 	double	pow_aux;
 
-	ray->cx_x = info->player_x;
-	ray->cx_y = info->player_y;
+	ray->cx_x = info->player->player_x;
+	ray->cx_y = info->player->player_y;
 	while (!is_wall(ray->cy_x, ray->cy_y, info))
 	{
 		printf("entrando\n");
@@ -49,11 +49,11 @@ void	calc_collision_y(t_info *info, t_ray *ray)
 			ray->cy_y--;
 		else
 			ray->cy_y++;
-		ray->cy_x = (info->player_y - ray->cy_y) / tan(ray->angle);
-		ray->cy_x += info->player_x;
+		ray->cy_x = (info->player->player_y - ray->cy_y) / tan(ray->angle);
+		ray->cy_x += info->player->player_x;
 	}
-	pow_aux = pow(info->player_x - ray->cy_x, 2);
-	pow_aux += pow(info->player_y - ray->cy_y, 2);
+	pow_aux = pow(info->player->player_x - ray->cy_x, 2);
+	pow_aux += pow(info->player->player_y - ray->cy_y, 2);
 	if (pow_aux > 10000)
 		pow_aux = 10000;
 	ray->dist_y = sqrt(pow_aux);
@@ -63,19 +63,19 @@ void	calc_collision_x(t_info *info, t_ray *ray)
 {
 	double	pow_aux;
 
-	ray->cx_x = info->player_x;
-	ray->cx_y = info->player_y;
+	ray->cx_x = info->player->player_x;
+	ray->cx_y = info->player->player_y;
 	while (!is_wall(ray->cx_x, ray->cx_y, info))
 	{
 		if (ray->angle > M_PI_2 && ray->angle < (3 * M_PI_2))
 			ray->cx_x--;
 		else
 			ray->cx_x++;
-		ray->cx_y = (info->player_x - ray->cx_x) * tan(ray->angle);
-		ray->cy_y += info->player_y;
+		ray->cx_y = (info->player->player_x - ray->cx_x) * tan(ray->angle);
+		ray->cy_y += info->player->player_y;
 	}
-	pow_aux = pow(info->player_x - ray->cx_x, 2);
-	pow_aux += pow(info->player_y - ray->cx_y, 2);
+	pow_aux = pow(info->player->player_x - ray->cx_x, 2);
+	pow_aux += pow(info->player->player_y - ray->cx_y, 2);
 	if (pow_aux > 10000)
 		pow_aux = 10000;
 	ray->dist_x = sqrt(pow_aux);
@@ -88,8 +88,8 @@ void	ray_casting(t_info *info)
 	int		i;
 
 	i = 0;
-	printf("player angle: %f   POV_angle: %f\n", info->player_angle, POV_ANGLE);
-	ray.angle = info->player_angle - (POV_ANGLE / 2);
+	printf("player angle: %f   POV_angle: %f\n", info->player->player_angle, POV_ANGLE);
+	ray.angle = info->player->player_angle - (POV_ANGLE / 2);
 	printf("ray angle: %f\n", ray.angle);
 	angle_frac = (POV_ANGLE / SCR_W);
 	while (i < 10)

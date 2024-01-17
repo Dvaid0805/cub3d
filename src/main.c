@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unplanned_exit.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 15:24:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 12:35:57 by dbredykh         ###   ########.fr       */
+/*   Created: 2024/01/16 11:27:08 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/17 16:45:09 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	unplanned_exit(t_info *info, int error_code)
+int	main(int argc, char **argv)
 {
-	general_free(info);
-	if (error_code)
-		put_error(error_code, 0);
-	exit(EXIT_FAILURE);
+	if (argc < 2)
+		return (put_usage(), 1);
+	init(argv);
+	return (0);
 }

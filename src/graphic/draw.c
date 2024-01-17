@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unplanned_exit.c                                   :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 15:24:49 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 12:35:57 by dbredykh         ###   ########.fr       */
+/*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/17 15:50:13 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	unplanned_exit(t_info *info, int error_code)
+void	fill_floor_ceilings(t_info *info)
 {
-	general_free(info);
-	if (error_code)
-		put_error(error_code, 0);
-	exit(EXIT_FAILURE);
+	int	row;
+	int	col;
+
+	row = 0;
+	col = 0;
+	while (col < SCR_W)
+	{
+		row = 0;
+		while (row < SCR_H)
+		{
+			if (row < SCR_H / 2)
+				mlx_put_pixel(info->img, col, row, info->c_color);
+			else
+				mlx_put_pixel(info->img, col, row, info->f_color);
+			row++;
+		}
+		col++;
+	}
 }

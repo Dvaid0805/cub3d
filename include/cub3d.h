@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:04:21 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:37:28 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// prevent leeks
-void		free_parser_data(t_info *info);
+// ----------------- INIT ----------------- //
+void		init(char **argv);
 
+// ----------------- PREVENT LEEKS ----------------- //
+void		free_parser(t_parser *parser);
+void		free_info(t_info *info);
+void		general_free(t_info *info);
+
+// ----------------- PARSER ----------------- //
 // additional functions
 void		put_usage(void);
 const char	*get_error_message(enum e_ErrorCode code);
@@ -33,18 +39,18 @@ void		put_error(int error_num, char *custom_message);
 void		unplanned_exit(t_info *info, int error_code);
 
 // map_parsing.c
-void		map_parsing(t_info *info, char *argv);
-int			check_map_oblig_data(t_info *info, int fd, char *line);
-int			check_map_format(t_info *info, int fd, char *line);
+void		parser_init(t_info *info, char *argv);
+int			check_map_oblig_data(t_parser *parser, int fd, char *line);
+int			check_map_format(t_parser *parser, int fd, char *line);
 double		get_player_direction(char c);
 void		reverse_map(char **map);
 
 // is_bool_functions.c
-bool		is_acceptable_map_value(t_info *info, char **map, int row, int col);
+bool		is_acceptable_map_value(t_parser *parser, char **map, int row, int col);
 bool		is_texture_or_color(char *s, bool color_check_bool);
 bool		is_all_spaces(const char *str);
 bool		is_valid_map_char(char c);
-bool		is_enough_info_oblig_data(t_info *info);
+bool		is_enough_parser_oblig_data(t_parser *parser);
 bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
 
@@ -57,4 +63,11 @@ void		draw_col(t_info *info, t_ray *ray, int i);
 // dbg_functions.c
 void		dbg_file_data(t_info *info);
 void		dbg_print_ray(t_ray *ray);
+
+// ----------------- GRAPHIC ----------------- //
+// Draw.c
+void		fill_floor_ceilings(t_info *info);
+void		graphic_init(t_info *info);
+// Hook.c
+void		ft_hook(void* param);
 #endif

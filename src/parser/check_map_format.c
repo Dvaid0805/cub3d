@@ -6,13 +6,13 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:04:44 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:38:32 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_is_surrounded_by_ones(char **map)
+static int	check_is_surrounded_by_ones(char **map)
 {
 	int	row;
 	int	col;
@@ -35,7 +35,7 @@ int	check_is_surrounded_by_ones(char **map)
 	return (1);
 }
 
-int	check_acceptable_map_values(t_info *info, char **m)
+static int	check_acceptable_map_values(t_parser *parser, char **m)
 {
 	int	row;
 	int	col;
@@ -49,13 +49,13 @@ int	check_acceptable_map_values(t_info *info, char **m)
 		{
 			if (ft_isspace(m[row][col]))
 				m[row][col] = '2';
-			else if (!is_acceptable_map_value(info, m, row, col))
+			else if (!is_acceptable_map_value(parser, m, row, col))
 				return (0);
 			col++;
 		}
 		row++;
 	}
-	if (info->player_x == -1)
+	if (parser->player_x == -1)
 		return (put_error(0, "Error: The player was not found\n"), 0);
 	return (1);
 }
@@ -103,7 +103,7 @@ static char	**get_map(int fd, char *last_line)
 	return (map);
 }
 
-int	check_map_format(t_info *info, int fd, char *line)
+int	check_map_format(t_parser *parser, int fd, char *line)
 {
 	char	**map;
 
@@ -116,10 +116,10 @@ int	check_map_format(t_info *info, int fd, char *line)
 	if (!map)
 		return (free(line), close(fd), 0);
 	reverse_map(map);
-	if (!check_acceptable_map_values(info, map)
+	if (!check_acceptable_map_values(parser, map)
 		|| !check_is_surrounded_by_ones(map))
 		return (close(fd), ft_split_free(map), 0);
-	free(info->map);
-	info->map = map;
+	free(parser->map);
+	parser->map = map;
 	return (1);
 }

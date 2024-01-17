@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_parser_data.c                                 :+:      :+:    :+:   */
+/*   graph_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 16:12:46 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 20:04:37 by dbredykh         ###   ########.fr       */
+/*   Created: 2024/01/16 18:07:09 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/16 18:09:55 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_parser_data(t_info *info)
+void graphic_init(t_info *info)
 {
-	if (info->no_txt_loc)
-		free(info->no_txt_loc);
-	if (info->so_txt_loc)
-		free(info->so_txt_loc);
-	if (info->we_txt_loc)
-		free(info->we_txt_loc);
-	if (info->ea_txt_loc)
-		free(info->ea_txt_loc);
-	ft_split_free(info->map);
-	free(info);
+	info->mlx = mlx_init(SCR_W, SCR_H, "cub3D", false);
+	if (!info->mlx)
+		unplanned_exit(info, E_MLX);
+	info->img = mlx_new_image(info->mlx, SCR_W, SCR_H);
+	if (!info->img)
+		unplanned_exit(info, E_MLX);
+	mlx_image_to_window(info->mlx, info->img, 0, 0);
+	fill_floor_ceilings(info);
+	mlx_loop_hook(info->mlx, ft_hook, info->mlx);
+	mlx_loop(info->mlx);
 }

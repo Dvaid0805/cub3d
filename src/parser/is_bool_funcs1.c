@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   is_bool_funcs1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 18:20:18 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:39:18 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_acceptable_map_value(t_info *info, char **map, int row, int col)
+bool	is_acceptable_map_value(t_parser *parser, char **map, int row, int col)
 {
 	if (is_valid_map_char(map[row][col]))
 	{
 		if (map[row][col] == 'N' || map[row][col] == 'S'
 			|| map[row][col] == 'W' || map[row][col] == 'E')
 		{
-			if (info->player_x == -1 && info->player_y == -1)
+			if (parser->player_x == -1 && parser->player_y == -1)
 			{
-				info->player_angle = get_player_direction(map[row][col]);
-				info->player_x = row + 0.5;
-				info->player_y = col + 0.5;
+				parser->player_angle = get_player_direction(map[row][col]);
+				parser->player_x = row + 0.5; //Maybe it's in vice versa
+				parser->player_y = col + 0.5; //Maybe it's in vice versa
 				map[row][col] = '0';
 			}
 			else
@@ -38,7 +38,7 @@ bool	is_texture_or_color(char *s, bool color_check_bool)
 {
 	if (color_check_bool && (s[0] == 'F' || s[0] == 'C'))
 		return (1);
-	else if ((s[0] == 'N' && s[1] == 'O')   //   if (ft_strncmp(s, "NO", 2) == 0)
+	else if ((s[0] == 'N' && s[1] == 'O')
 		|| (s[0] == 'S' && s[1] == 'O')
 		|| (s[0] == 'W' && s[1] == 'E')
 		|| (s[0] == 'E' && s[1] == 'A'))
@@ -74,14 +74,14 @@ bool	is_valid_map_char(char c)
 	return (false);
 }
 
-bool	is_enough_info_oblig_data(t_info *info)
+bool	is_enough_parser_oblig_data(t_parser *parser)
 {
-	if (info->no_txt_loc == NULL
-		|| info->so_txt_loc == NULL
-		|| info->we_txt_loc == NULL
-		|| info->ea_txt_loc == NULL
-		|| info->f_color == -1
-		|| info->c_color == -1)
+	if (parser->no_txt_loc == NULL
+		|| parser->so_txt_loc == NULL
+		|| parser->we_txt_loc == NULL
+		|| parser->ea_txt_loc == NULL
+		|| parser->f_color == -1
+		|| parser->c_color == -1)
 		return (false);
 	return (true);
 }

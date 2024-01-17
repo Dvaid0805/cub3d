@@ -3,45 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 12:42:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 11:56:09 by pvilchez         ###   ########.fr       */
+/*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
+/*   Updated: 2024/01/17 16:48:13 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	parser_init_info(t_info *info)
+static void steal_parser_data(t_info *info)
 {
-	info->map = ft_calloc(sizeof(char *), 1);
-	if (!info->map)
-		unplanned_exit(info, E_MEMORY);
-	info->map[0] = NULL;
-	info->no_txt_loc = NULL;
-	info->so_txt_loc = NULL;
-	info->we_txt_loc = NULL;
-	info->ea_txt_loc = NULL;
-	info->f_color = -1;
-	info->c_color = -1;
-	info->player_x = -1;
-	info->player_y = -1;
-	info->player_angle = -1;
+	info->no_txt = mlx_load_png(info->parser->no_txt_loc);
+	info->so_txt = mlx_load_png(info->parser->so_txt_loc);
+	info->we_txt = mlx_load_png(info->parser->we_txt_loc);
+	info->ea_txt = mlx_load_png(info->parser->ea_txt_loc);
+	info->map = info->parser->map;
+	info->player->player_x = info->parser->player_x;
+	info->player->player_y = info->parser->player_y;
+	info->player->player_angle = info->parser->player_angle;
+	info->f_color = info->parser->f_color;
+	info->c_color = info->parser->c_color;
+	free(info->parser->no_txt_loc);
+	free(info->parser->so_txt_loc);
+	free(info->parser->we_txt_loc);
+	free(info->parser->ea_txt_loc);
+	free(info->parser);
+	info->parser = NULL;
 }
 
-int	main(int argc, char **argv)
+static void init_structs(t_info *info)
 {
-	t_info	*info;
+	info->player = (t_player *)malloc(sizeof(t_player));
+	if (!info->player)
+		unplanned_exit(info, E_MEMORY);
+	info->ray = (t_ray *)malloc(sizeof(t_ray));
+	if (!info->ray)
+		unplanned_exit(info, E_MEMORY);
+	steal_parser_data(info);
+}
 
-	if (argc < 2)
-		return (put_usage(), 1);
+static t_info	*initial_info(void)
+{
+	t_info *info;
+
 	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
-		return (put_error(E_MEMORY, 0), 1);
-	parser_init_info(info);
-	map_parsing(info, argv[1]);
+		unplanned_exit(info, E_MEMORY);
+	info->parser = (t_parser *)malloc(sizeof(t_parser));
+	if (!info->parser)
+		unplanned_exit(info, E_MEMORY);
+	info->player = NULL;
+	info->ray = NULL;
+	info->mlx = NULL;
+	info->img = NULL;
+	info->no_txt = NULL;
+	info->so_txt = NULL;
+	info->we_txt = NULL;
+	info->ea_txt = NULL;
+	info->map = NULL;
+	info->f_color = -1;
+	info->c_color = -1;
+	return (info);
+}
+
+void init(char **argv)
+{
+	t_info *info;
+
+	info = initial_info();
+	parser_init(info, argv[1]);
+	init_structs(info);
+	graphic_init(info);
 	dbg_file_data(info);
 	ray_casting(info);
-	free_parser_data(info);
-	return (0);
+	general_free(info);
 }

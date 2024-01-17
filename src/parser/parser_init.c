@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*   parser_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 14:05:32 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:46:08 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,37 @@ static int	is_valid_map_extension(char *map)
 		&& map[len - 3] == 'c' && map[len - 4] == '.');
 }
 
-void	map_parsing(t_info *info, char *argv)
+static void	parser_init_data(t_info *info)
+{
+	info->parser->map = ft_calloc(sizeof(char *), 1);
+	if (!info->parser->map)
+		unplanned_exit(info, E_MEMORY);
+	info->parser->map[0] = NULL;
+	info->parser->no_txt_loc = NULL;
+	info->parser->so_txt_loc = NULL;
+	info->parser->we_txt_loc = NULL;
+	info->parser->ea_txt_loc = NULL;
+	info->parser->f_color = -1;
+	info->parser->c_color = -1;
+	info->parser->player_x = -1;
+	info->parser->player_y = -1;
+	info->parser->player_angle = -1;
+}
+
+void	parser_init(t_info *info, char *argv)
 {
 	int		fd;
 	char	*line;
 
 	fd = open(argv, O_RDONLY);
 	line = NULL;
+	parser_init_data(info);
 	if (fd < 0 || !is_valid_map_extension(argv))
 		unplanned_exit(info, E_INVALID_FILE);
-	if (!check_map_oblig_data(info, fd, line))
+	if (!check_map_oblig_data(info->parser, fd, line))
 		unplanned_exit(info, E_OBLIG_DATA);
-	if (!is_enough_info_oblig_data(info))
+	if (!is_enough_parser_oblig_data(info->parser))
 		unplanned_exit(info, E_OBLIG_DATA);
-	if (!check_map_format(info, fd, line))
+	if (!check_map_format(info->parser, fd, line))
 		unplanned_exit(info, E_INVALID_MAP);
 }

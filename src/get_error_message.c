@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 09:31:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/11 15:46:04 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:42:29 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ const char	*get_error_message(enum e_ErrorCode code)
 		return ("Error: Wrong passed file");
 	else if (code == E_INVALID_MAP)
 		return ("Error: Invalid map format");
+	else if (code == E_MLX)
+		return ("Error: Something went wrong with mlx");
 	else
 		return ("Unknown error");
 }

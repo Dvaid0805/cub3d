@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_structs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/17 13:15:49 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:35:16 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ typedef struct s_ray
 	double		height;
 }				t_ray;
 
-typedef struct s_info
+typedef struct s_parser
 {
-	mlx_t		*mlx;
-	mlx_image_t	*g_img;
-	
 	char		*no_txt_loc;
 	char		*so_txt_loc;
 	char		*we_txt_loc;
@@ -43,6 +40,29 @@ typedef struct s_info
 	int			player_x;
 	int			player_y;
 	double		player_angle;
+}				t_parser;
+
+typedef struct s_player
+{
+	int			player_x;
+	int			player_y;
+	double		player_angle;
+}		t_player;
+
+typedef struct s_info
+{
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_texture_t	*no_txt;
+	mlx_texture_t	*so_txt;
+	mlx_texture_t	*we_txt;
+	mlx_texture_t	*ea_txt;
+	int				f_color;
+	int				c_color;
+	struct s_player	*player;
+	struct s_parser	*parser;
+	struct s_ray	*ray;
+	char			**map;
 }				t_info;
 
 #endif
