@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 13:15:19 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:04:21 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		map_parsing(t_info *info, char *argv);
 int			check_map_oblig_data(t_info *info, int fd, char *line);
 int			check_map_format(t_info *info, int fd, char *line);
 double		get_player_direction(char c);
+void		reverse_map(char **map);
 
 // is_bool_functions.c
 bool		is_acceptable_map_value(t_info *info, char **map, int row, int col);
