@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 18:10:31 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:54:51 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
 
 // dbg_functions.c
-void		dbg_file_data(t_parser *parser);
+void		dbg_file_data(t_info *info);
 
 // ----------------- GRAPHIC ----------------- //
 // Draw.c

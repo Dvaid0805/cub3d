@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/16 14:26:04 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:11:43 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "cub3d.h"
 
-# define SCR_H 600
-# define SCR_W 1024
+# define SCR_H 712
+# define SCR_W 1424
 
 enum	e_ErrorCode
 {
