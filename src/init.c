@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 17:46:02 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:56:40 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void init(char **argv)
 	parser_init(info, argv[1]);
 	init_structs(info);
 	graphic_init(info);
-	dbg_file_data(info);
-	ray_casting(info);
+	/* dbg_file_data(info);
+	ray_casting(info); */
 	general_free(info);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graph_init.c                                       :+:      :+:    :+:   */
+/*   graphic_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:07:09 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/16 18:09:55 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:54:03 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void graphic_init(t_info *info)
 		unplanned_exit(info, E_MLX);
 	mlx_image_to_window(info->mlx, info->img, 0, 0);
 	fill_floor_ceilings(info);
-	mlx_loop_hook(info->mlx, ft_hook, info->mlx);
+	mlx_loop_hook(info->mlx, ft_hook, info);
 	mlx_loop(info->mlx);
 }
