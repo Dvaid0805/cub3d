@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:48:13 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:14:32 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static t_info	*initial_info(void)
 	return (info);
 }
 
+
+
 void init(char **argv)
 {
 	t_info *info;
@@ -74,7 +76,7 @@ void init(char **argv)
 	info = initial_info();
 	parser_init(info, argv[1]);
 	init_structs(info);
-	graphic_init(info);
+	//graphic_init(info);
 	dbg_file_data(info);
 	ray_casting(info);
 	general_free(info);

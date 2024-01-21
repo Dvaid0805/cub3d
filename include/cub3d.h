@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:37:28 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:30:30 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		unplanned_exit(t_info *info, int error_code);
 // map_parsing.c
 void		parser_init(t_info *info, char *argv);
 int			check_map_oblig_data(t_parser *parser, int fd, char *line);
-int			check_map_format(t_parser *parser, int fd, char *line);
+int			check_map_format(t_info *info, int fd, char *line);
 double		get_player_direction(char c);
 void		reverse_map(char **map);
 
@@ -56,6 +56,10 @@ bool		is_map_ages_ones(char **map, int r, int c);
 
 // ray_casting.c
 void		ray_casting(t_info *info);
+
+// ray_casting2.c
+double		ray_step_minus(double x);
+double		ray_step_plus(double x);
 
 // drawing_walls.c
 void		draw_col(t_info *info, t_ray *ray, int i);

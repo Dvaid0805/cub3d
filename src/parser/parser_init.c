@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:46:08 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:22:36 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	parser_init(t_info *info, char *argv)
 		unplanned_exit(info, E_OBLIG_DATA);
 	if (!is_enough_parser_oblig_data(info->parser))
 		unplanned_exit(info, E_OBLIG_DATA);
-	if (!check_map_format(info->parser, fd, line))
+	if (!check_map_format(info, fd, line))
 		unplanned_exit(info, E_INVALID_MAP);
 }

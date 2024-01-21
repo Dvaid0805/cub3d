@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_format.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:38:32 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:18:51 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	check_is_surrounded_by_ones(char **map)
 	return (1);
 }
 
-static int	check_acceptable_map_values(t_parser *parser, char **m)
+static int	check_acceptable_map_values(t_info *info, char **m)
 {
 	int	row;
 	int	col;
@@ -49,13 +49,15 @@ static int	check_acceptable_map_values(t_parser *parser, char **m)
 		{
 			if (ft_isspace(m[row][col]))
 				m[row][col] = '2';
-			else if (!is_acceptable_map_value(parser, m, row, col))
+			else if (!is_acceptable_map_value(info->parser, m, row, col))
 				return (0);
 			col++;
 		}
 		row++;
 	}
-	if (parser->player_x == -1)
+	info->columns = col;
+	info->rows = row;
+	if (info->parser->player_x == -1)
 		return (put_error(0, "Error: The player was not found\n"), 0);
 	return (1);
 }
@@ -103,7 +105,7 @@ static char	**get_map(int fd, char *last_line)
 	return (map);
 }
 
-int	check_map_format(t_parser *parser, int fd, char *line)
+int	check_map_format(t_info *info, int fd, char *line)
 {
 	char	**map;
 
@@ -116,10 +118,10 @@ int	check_map_format(t_parser *parser, int fd, char *line)
 	if (!map)
 		return (free(line), close(fd), 0);
 	reverse_map(map);
-	if (!check_acceptable_map_values(parser, map)
+	if (!check_acceptable_map_values(info, map)
 		|| !check_is_surrounded_by_ones(map))
 		return (close(fd), ft_split_free(map), 0);
-	free(parser->map);
-	parser->map = map;
+	free(info->parser->map);
+	info->parser->map = map;
 	return (1);
 }
