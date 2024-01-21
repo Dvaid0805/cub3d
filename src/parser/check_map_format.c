@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 18:18:51 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/21 20:52:11 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	check_map_format(t_info *info, int fd, char *line)
 	map = get_map(fd, line);
 	if (!map)
 		return (free(line), close(fd), 0);
-	reverse_map(map);
+	//reverse_map(map);
 	if (!check_acceptable_map_values(info, map)
 		|| !check_is_surrounded_by_ones(map))
 		return (close(fd), ft_split_free(map), 0);

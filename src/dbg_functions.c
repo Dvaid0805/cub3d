@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:36:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 18:38:40 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/21 19:57:24 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	dbg_file_data(t_info *info)
 
 void	dbg_print_ray(t_ray *ray)
 {
-	printf("ray: %d    angle: %f\n", ray->start, ray->angle);
+	printf("ray: %d    angle: %f\n", ray->id, ray->angle);
 	printf("X  lenght: %f  ", ray->dist_x);
 	printf("coll. point x: %f  %f       ", ray->cx_x, ray->cx_y);
 	printf("Y  lenght: %f  ", ray->dist_y);

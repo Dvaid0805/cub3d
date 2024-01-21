@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/21 19:28:39 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/22 00:15:15 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ bool	is_wall(double x, double y, t_info *info)
 		x = 0;
 	if (y < 0)
 		y = 0;
-	if (x > info->columns)
-		x = info->columns;
-	if (y > info->rows)
-		y = info->rows;
+	if (x > info->rows)
+		x = info->rows;
+	if (y > info->columns)
+		y = info->columns;
 	if (info->map[(int)x][(int)y] != '0')
+	{
+		printf("%d %d wall\n", (int)x, (int)y);
 		return (true);
+	}
+	printf("%d %d no wall\n", (int)x, (int)y);
 	return (false);
 }
 
@@ -39,11 +43,11 @@ void	calc_collision_y(t_info *info, t_ray *ray)
 {
 	double	pow_aux;
 
-	ray->cx_x = info->player->player_x;
-	ray->cx_y = info->player->player_y;
-	while (!is_wall(ray->cy_x, ray->cy_y, info))
+	ray->cy_x = info->player->player_x;
+	ray->cy_y = info->player->player_y;
+	printf("collision Y\n");
+	while (is_wall(ray->cy_x, ray->cy_y, info) == false)
 	{
-		printf("entrando\n");
 		if (ray->angle > 0 && ray->angle < M_PI)
 			ray->cy_y = ray->cy_y - ray_step_minus(info->ray->cy_y);
 		else
@@ -64,6 +68,7 @@ void	calc_collision_x(t_info *info, t_ray *ray)
 
 	ray->cx_x = info->player->player_x;
 	ray->cx_y = info->player->player_y;
+	printf("collision X\n");
 	while (!is_wall(ray->cx_x, ray->cx_y, info))
 	{
 		if (ray->angle > M_PI_2 && ray->angle < (3 * M_PI_2))
@@ -72,7 +77,6 @@ void	calc_collision_x(t_info *info, t_ray *ray)
 			ray->cx_x = ray->cx_x + ray_step_plus(info->ray->cx_x);
 		ray->cx_y = (info->player->player_x - ray->cx_x) * tan(ray->angle);
 		ray->cx_y += info->player->player_y;
-		printf("cx_x: %f   cx_y: %f\n", ray->cx_x, ray->cx_y);
 	}
 	pow_aux = pow(info->player->player_x - ray->cx_x, 2);
 	pow_aux += pow(info->player->player_y - ray->cx_y, 2);
@@ -90,10 +94,11 @@ void	ray_casting(t_info *info)
 	i = 0;
 	ray.angle = info->player->player_angle - (POV_ANGLE / 2);
 	angle_frac = (POV_ANGLE / SCR_W);
-	while (i < 10)
+	printf("POV_ANGLE: %f   angle_frac: %f\n", POV_ANGLE, angle_frac);
+	while (i < SCR_W)
 	{
-		ray.start = i;
-		ray.angle = normalize_angle(ray.angle + angle_frac * i);
+		ray.id = i;
+		ray.angle = ray.angle + angle_frac;
 		calc_collision_x(info, &ray);
 		calc_collision_y(info, &ray);
 		//draw_col(info, &ray, i);

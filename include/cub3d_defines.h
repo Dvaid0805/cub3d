@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/17 16:32:15 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/21 19:36:52 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "cub3d.h"
 
 # define SCR_H 600
-# define SCR_W 1024
+# define SCR_W 10
 # define POV_ANGLE (M_PI / 3)
 
 enum	e_ErrorCode

@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/17 18:37:40 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/21 19:57:33 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_ray
 {
+	int			id;
 	double		angle;
 	double		cx_x;
 	double		cx_y;
@@ -24,7 +25,6 @@ typedef struct s_ray
 	double		cy_x;
 	double		cy_y;
 	double		dist_y;
-	int			start;
 	double		height;
 }				t_ray;
 
