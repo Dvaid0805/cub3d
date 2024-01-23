@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/17 16:47:46 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:33:39 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,18 @@ void	calc_collision_x(t_info *info, t_ray *ray)
 	ray->dist_x = sqrt(pow_aux);
 }
 
-void	ray_casting(t_info *info)
+void	ray_casting(t_info *info, int x)
 {
 	t_ray	ray;
 	double	angle_frac;
-	int		i;
 
-	i = 0;
 	printf("player angle: %f   POV_angle: %f\n", info->player->player_angle, POV_ANGLE);
 	ray.angle = info->player->player_angle - (POV_ANGLE / 2);
 	printf("ray angle: %f\n", ray.angle);
 	angle_frac = (POV_ANGLE / SCR_W);
-	while (i < 10)
-	{
-		ray.start = i;
-		ray.angle = normalize_angle(ray.angle + angle_frac * i);
-		calc_collision_x(info, &ray);
-		calc_collision_y(info, &ray);
-		//draw_col(info, &ray, i);
-		dbg_print_ray(&ray);
-		i++;
-	}
+	ray.start = x;
+	ray.angle = normalize_angle(ray.angle + angle_frac * x);
+	/* calc_collision_x(info, &ray);
+	calc_collision_y(info, &ray); */
+	/* dbg_print_ray(&ray); */
 }

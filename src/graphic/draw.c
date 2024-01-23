@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 13:02:51 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:30:18 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,41 +35,45 @@ int	get_texture_pixel_color(mlx_texture_t *texture, int y, int x)
     return (ft_get_rgba(pixel[0], pixel[1], pixel[2], pixel[3]));
 }
 
-
-void	fill_floor_ceilings(t_info *info)
+void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
 {
-    int	y;
+    int color;
+    int texY;
+    int y;
+
+    y = 1;
+    while (y < SCR_H)
+    {
+        if (y < w_start)
+            mlx_put_pixel(info->img, x, y, info->c_color);
+        else if (y > w_end)
+            mlx_put_pixel(info->img, x, y, info->f_color);
+        else
+        {
+            texY = calc_y_pixel(w_start, w_end, y, info->no_txt->height);
+            color = get_texture_pixel_color(info->no_txt, texY, x);
+            mlx_put_pixel(info->img, x, y, color);
+        }
+        y++;
+    }
+}
+
+void  draw(t_info *info)
+{
     int x;
+    int	w_height;
+    int	w_start;
+    int	w_end;
+    double distance = 1.5;
 
     x = 0;
     while (x < SCR_W)
     {
-        int	w_height;
-        int	w_start;
-        int	w_end;
-
-        // formula:
-        //distance = pixel->ray_len * cos(delta);
-		// or info->ray->dist_x * cos(info->ray->angle - info->player->player_angle)
-        double distance = 1.5;
+        ray_casting(info, x);
         w_height = SCR_H / distance;
         w_start = (SCR_H / 2) - (w_height / 2);
         w_end = (SCR_H / 2) + (w_height / 2);
-        y = 1;
-        while (y < SCR_H)
-        {
-            if (y < w_start)
-                mlx_put_pixel(info->img, x, y, info->c_color);
-            else if (y > w_end)
-                mlx_put_pixel(info->img, x, y, info->f_color);
-            else
-            {
-                int texY = calc_y_pixel(w_start, w_end, y, info->no_txt->height);
-                int color = get_texture_pixel_color(info->no_txt, texY, x);
-                mlx_put_pixel(info->img, x, y, color);
-            }
-            y++;
-        }
+        fill_floor_ceilings_else(info, x, w_start, w_end);
         x++;
     }
 }

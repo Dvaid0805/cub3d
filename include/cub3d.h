@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:37:28 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:28:28 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
 
 // ray_casting.c
-void		ray_casting(t_info *info);
-
-// drawing_walls.c
-void		draw_col(t_info *info, t_ray *ray, int i);
+void		ray_casting(t_info *info, int x);
 
 // dbg_functions.c
 void		dbg_file_data(t_info *info);
@@ -66,7 +63,7 @@ void		dbg_print_ray(t_ray *ray);
 
 // ----------------- GRAPHIC ----------------- //
 // Draw.c
-void		fill_floor_ceilings(t_info *info);
+void		draw(t_info *info);
 void		graphic_init(t_info *info);
 // Hook.c
 void		ft_hook(void* param);
