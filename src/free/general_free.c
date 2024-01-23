@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:20:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 17:44:32 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:00:12 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void general_free(t_info *info)
 		free_parser(info->parser);
 	if (info->player)
 		free(info->player);
-	if (info->mlx != NULL)
-		mlx_terminate(info->mlx);
 	if (info->ray)
 		free(info->ray);
 	if (info)
