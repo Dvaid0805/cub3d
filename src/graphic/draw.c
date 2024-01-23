@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 16:35:56 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 23:37:33 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	get_texture_pixel_color(mlx_texture_t *texture, int y, int x)
 
 void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
 {
-    int color;
-    int texY;
+/*     int color;
+    int texY; */
     int y;
 
     y = 1;
@@ -50,9 +50,10 @@ void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
             mlx_put_pixel(info->img, x, y, info->f_color);
         else
         {
-            texY = calc_y_pixel(w_start, w_end, y, info->no_txt->height);
-            color = get_texture_pixel_color(info->no_txt, texY, x);
-            mlx_put_pixel(info->img, x, y, color);
+/*             texY = calc_y_pixel(w_start, w_end, y, info->ray->texture->height);
+            color = get_texture_pixel_color(info->ray->texture, texY, x);
+            mlx_put_pixel(info->img, x, y, color); */
+            mlx_put_pixel(info->img, x, y, 0XFF0000FF);
         }
         y++;
     }
@@ -64,13 +65,12 @@ void  draw(t_info *info)
     int	w_height;
     int	w_start;
     int	w_end;
-    double distance = 1.5;
 
     x = 0;
     while (x < SCR_W)
     {
         ray_casting(info, x);
-        w_height = SCR_H / distance;
+        w_height = SCR_H / info->ray->dist;
         w_start = (SCR_H / 2) - (w_height / 2);
         w_end = (SCR_H / 2) + (w_height / 2);
         fill_floor_ceilings_else(info, x, w_start, w_end);

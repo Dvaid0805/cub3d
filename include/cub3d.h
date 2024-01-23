@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 16:41:32 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 22:52:34 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		unplanned_exit(t_info *info, int error_code);
 // map_parsing.c
 void		parser_init(t_info *info, char *argv);
 int			check_map_oblig_data(t_parser *parser, int fd, char *line);
-int			check_map_format(t_parser *parser, int fd, char *line);
+int			check_map_format(t_info *info, int fd, char *line);
 double		get_player_direction(char c);
 
 // is_bool_functions.c
@@ -57,6 +57,9 @@ bool		is_map_ages_ones(char **map, int r, int c);
 
 // ray_casting.c
 void		ray_casting(t_info *info, int x);
+
+// ray_casting2.c
+bool		is_wall(double x, double y, t_info *info);
 
 // dbg_functions.c
 void		dbg_file_data(t_info *info);

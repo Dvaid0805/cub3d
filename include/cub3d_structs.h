@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/17 18:26:24 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 22:57:14 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@
 
 typedef struct s_ray
 {
-	double		angle;
-	double		cx_x;
-	double		cx_y;
-	double		dist_x;
-	double		cy_x;
-	double		cy_y;
-	double		dist_y;
-	int			start;
-	double		height;
+	int				id;
+	double			dist;
+	mlx_texture_t	*texture;
+	double			tex_start;
+	double			angle;
+	double			cx_x;
+	double			cx_y;
+	double			dist_x;
+	double			cy_x;
+	double			cy_y;
+	double			dist_y;
+	double			height;
 }				t_ray;
 
 typedef struct s_parser
@@ -37,15 +40,15 @@ typedef struct s_parser
 	int			f_color;
 	int			c_color;
 	char		**map;
-	int			player_x;
-	int			player_y;
+	double		player_x;
+	double		player_y;
 	double		player_angle;
 }				t_parser;
 
 typedef struct s_player
 {
-	int			player_x;
-	int			player_y;
+	double		player_x;
+	double		player_y;
 	double		player_angle;
 }		t_player;
 
@@ -57,6 +60,8 @@ typedef struct s_info
 	mlx_texture_t	*so_txt;
 	mlx_texture_t	*we_txt;
 	mlx_texture_t	*ea_txt;
+	int				columns;
+	int				rows;
 	int				f_color;
 	int				c_color;
 	struct s_player	*player;

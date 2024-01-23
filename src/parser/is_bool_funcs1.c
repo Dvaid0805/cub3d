@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_bool_funcs1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:39:18 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/21 21:03:15 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ bool	is_acceptable_map_value(t_parser *parser, char **map, int row, int col)
 			if (parser->player_x == -1 && parser->player_y == -1)
 			{
 				parser->player_angle = get_player_direction(map[row][col]);
-				parser->player_x = row + 0.5; //Maybe it's in vice versa
-				parser->player_y = col + 0.5; //Maybe it's in vice versa
+				parser->player_x = row + 0.5;
+				parser->player_y = col + 0.5;
 				map[row][col] = '0';
 			}
 			else

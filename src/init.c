@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 15:51:32 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 22:53:34 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void init_ray(t_ray *ray)
 	ray->cy_x = -1;
 	ray->cy_y = -1;
 	ray->dist_y = -1;
-	ray->start = -1;
+	ray->id = -1;
 	ray->height = -1;
 }
 
@@ -70,6 +70,8 @@ static t_info	*initial_info(void)
 	return (info);
 }
 
+
+
 void init(char **argv)
 {
 	t_info *info;
@@ -78,6 +80,5 @@ void init(char **argv)
 	parser_init(info, argv[1]);
 	init_structs(info);
 	graphic_init(info);
-	/* dbg_file_data(info); */;
 	general_free(info);
 }
