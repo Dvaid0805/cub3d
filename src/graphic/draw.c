@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 15:30:18 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:35:56 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ void  draw(t_info *info)
         w_end = (SCR_H / 2) + (w_height / 2);
         fill_floor_ceilings_else(info, x, w_start, w_end);
         x++;
+        init_ray(info->ray);
     }
 }

@@ -6,31 +6,30 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 15:29:07 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:51:32 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void steal_parser_data(t_info *info)
+static void init_player(t_player *player)
 {
-	info->no_txt = mlx_load_png(info->parser->no_txt_loc);
-	info->so_txt = mlx_load_png(info->parser->so_txt_loc);
-	info->we_txt = mlx_load_png(info->parser->we_txt_loc);
-	info->ea_txt = mlx_load_png(info->parser->ea_txt_loc);
-	free(info->map);
-	info->map = info->parser->map;
-	info->player->player_x = info->parser->player_x;
-	info->player->player_y = info->parser->player_y;
-	info->player->player_angle = info->parser->player_angle;
-	info->f_color = info->parser->f_color;
-	info->c_color = info->parser->c_color;
-	free(info->parser->no_txt_loc);
-	free(info->parser->so_txt_loc);
-	free(info->parser->we_txt_loc);
-	free(info->parser->ea_txt_loc);
-	free(info->parser);
-	info->parser = NULL;
+	player->player_x = -1;
+	player->player_y = -1;
+	player->player_angle = -1;
+}
+
+void init_ray(t_ray *ray)
+{
+	ray->angle = -1;
+	ray->cx_x = -1;
+	ray->cx_y = -1;
+	ray->dist_x = -1;
+	ray->cy_x = -1;
+	ray->cy_y = -1;
+	ray->dist_y = -1;
+	ray->start = -1;
+	ray->height = -1;
 }
 
 static void init_structs(t_info *info)
@@ -38,9 +37,11 @@ static void init_structs(t_info *info)
 	info->player = (t_player *)malloc(sizeof(t_player));
 	if (!info->player)
 		unplanned_exit(info, E_MEMORY);
+	init_player(info->player);
 	info->ray = (t_ray *)malloc(sizeof(t_ray));
 	if (!info->ray)
 		unplanned_exit(info, E_MEMORY);
+	init_ray(info->ray);
 	steal_parser_data(info);
 }
 
