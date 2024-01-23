@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/23 13:44:14 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:29:59 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	ray_casting(t_info *info)
 		ray.angle = ray.angle + angle_frac;
 		calc_collision_x(info, &ray);
 		calc_collision_y(info, &ray);
+		wall_height(info, &ray);
 		//Davyd's comment: Fix infinity loop
 		//Davyd's comment: I need distance = (ray->dist_x / ray->dist_y depends on who has the smaller length) * cos(fabs(ray_angle - player->view_angle)));
 		//Davyd's comment: I need textura = (depends on who has the smaller length) ray -> mlx_texture_t * texture = take (no/we/ea/so)_txt depends of angle;

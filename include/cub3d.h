@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 19:30:30 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 00:00:09 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		ray_casting(t_info *info);
 // ray_casting2.c
 double		ray_step_minus(double x);
 double		ray_step_plus(double x);
+void		wall_height(t_info *info, t_ray *ray);
 
 // drawing_walls.c
 void		draw_col(t_info *info, t_ray *ray, int i);

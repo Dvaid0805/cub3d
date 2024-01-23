@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:25:03 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/17 19:36:36 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 00:01:47 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,9 @@ double	ray_step_plus(double x)
 		return (1);
 	return (1 - (x - (int)x));
 }
+/* 
+void	wall_height(t_info *info, t_ray *ray)
+{
+	
+}
+ */
