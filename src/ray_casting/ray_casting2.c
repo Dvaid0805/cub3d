@@ -6,28 +6,61 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:25:03 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/23 00:01:47 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:11:02 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	ray_step_minus(double x)
+int	calc_next_x(double x, t_info *info)
 {
-	if (x - (int)x == 0)
-		return (1);
-	return (x - (int)x);
+	if (x - info->player->player_x < 0)
+	{
+		if (x == floor(x))
+			return (floor(x) - 1);
+		else
+			return (floor(x));
+	}
+	else
+		return (floor(x));
 }
 
-double	ray_step_plus(double x)
+int	calc_next_y(double y, t_info *info)
 {
-	if (x - (int)x == 0)
-		return (1);
-	return (1 - (x - (int)x));
+	if (y - info->player->player_y < 0)
+	{
+		if (y == floor(y))
+			return (floor(y) - 1);
+		else
+			return (floor(y));
+	}
+	else
+		return (floor(y));
 }
-/* 
-void	wall_height(t_info *info, t_ray *ray)
+
+bool	is_wall(double x, double y, t_info *info)
 {
-	
+	int	next_x;
+	int	next_y;
+
+	if (x < 0)
+		next_x = 0;
+	else if (x > info->rows - 1)
+		next_x = info->rows - 1;
+	else
+		next_x = calc_next_x(x, info);
+	if (y < 0)
+		next_y = 0;
+	else if (y > info->columns - 1)
+		next_y = info->columns - 1;
+	else
+		next_y = calc_next_y(y, info);
+	printf("x: %f  y: %f  next_x: %d  next_y: %d\n", x, y, next_x, next_y);
+	if (info->map[next_x][next_y] != '0')
+	{
+		printf("%d %d wall\n", next_x, next_y);
+		return (true);
+	}
+	printf("%d %d no wall\n", next_x, next_y);
+	return (false);
 }
- */

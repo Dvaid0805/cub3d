@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/22 18:40:48 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:31:40 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fill_floor_ceilings(t_info *info)
 		row = 0;
 		while (row < SCR_H)
 		{
-			if (row < SCR_H / 2 && )
+			if (row < SCR_H / 2)
 				mlx_put_pixel(info->img, col, row, info->c_color);
 			else if (row > SCR_H)
 				mlx_put_pixel(info->img, col, row, info->f_color);

@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/22 23:33:01 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:36:09 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@
 
 typedef struct s_ray
 {
-	int			id;
-	double		angle;
-	double		cx_x;
-	double		cx_y;
-	double		dist_x;
-	double		cy_x;
-	double		cy_y;
-	double		dist_y;
-	double		height;
+	int				id;
+	int				dist;
+	mlx_texture_t	*texture;
+	double			angle;
+	double			cx_x;
+	double			cx_y;
+	double			dist_x;
+	double			cy_x;
+	double			cy_y;
+	double			dist_y;
+	double			height;
 }				t_ray;
 
 typedef struct s_parser

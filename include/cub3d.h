@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 00:00:09 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:57:39 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ bool		is_map_ages_ones(char **map, int r, int c);
 void		ray_casting(t_info *info);
 
 // ray_casting2.c
-double		ray_step_minus(double x);
-double		ray_step_plus(double x);
-void		wall_height(t_info *info, t_ray *ray);
+bool		is_wall(double x, double y, t_info *info);
 
 // drawing_walls.c
 void		draw_col(t_info *info, t_ray *ray, int i);
