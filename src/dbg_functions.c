@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:36:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/21 19:57:24 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 20:39:12 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	dbg_print_ray(t_ray *ray)
 	printf("X  lenght: %f  ", ray->dist_x);
 	printf("coll. point x: %f  %f       ", ray->cx_x, ray->cx_y);
 	printf("Y  lenght: %f  ", ray->dist_y);
-	printf("coll. point y: %f  %f\n\n", ray->cy_x, ray->cy_y);
+	printf("coll. point y: %f  %f\ntex_start: %f\n\n", ray->cy_x, ray->cy_y, ray->tex_start);
 }

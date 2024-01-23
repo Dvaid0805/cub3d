@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/23 17:36:09 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 20:34:25 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_ray
 	int				id;
 	int				dist;
 	mlx_texture_t	*texture;
+	double			tex_start;
 	double			angle;
 	double			cx_x;
 	double			cx_y;

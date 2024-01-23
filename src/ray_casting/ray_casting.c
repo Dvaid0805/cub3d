@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/23 18:56:05 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/23 20:35:33 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	ray_casting(t_info *info)
 		if (ray.dist_x < ray.dist_y)
 		{
 			ray.dist = ray.dist_x;
+			ray.tex_start = ray.cx_y - floor(ray.cx_y);
 			if (ray.angle > M_PI_2 && ray.angle < (3 * M_PI_2))
 				ray.texture = info->we_txt;
 			else
@@ -93,6 +94,7 @@ void	ray_casting(t_info *info)
 		else
 		{
 			ray.dist = ray.dist_y;
+			ray.tex_start = ray.cy_x - floor(ray.cy_x);
 			if (ray.angle > 0 && ray.angle < M_PI)
 				ray.texture = info->no_txt;
 			else
