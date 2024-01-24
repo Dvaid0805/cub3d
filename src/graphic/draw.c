@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 23:37:33 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:45:37 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_texture_pixel_color(mlx_texture_t *texture, int y, int x)
 
 void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
 {
-/*     int color;
+    /* int color;
     int texY; */
     int y;
 
@@ -50,7 +50,7 @@ void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
             mlx_put_pixel(info->img, x, y, info->f_color);
         else
         {
-/*             texY = calc_y_pixel(w_start, w_end, y, info->ray->texture->height);
+            /* texY = calc_y_pixel(w_start, w_end, y, info->ray->texture->height);
             color = get_texture_pixel_color(info->ray->texture, texY, x);
             mlx_put_pixel(info->img, x, y, color); */
             mlx_put_pixel(info->img, x, y, 0XFF0000FF);
@@ -66,7 +66,7 @@ void  draw(t_info *info)
     int	w_start;
     int	w_end;
 
-    x = 0;
+    x = 1;
     while (x < SCR_W)
     {
         ray_casting(info, x);

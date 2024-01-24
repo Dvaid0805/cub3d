@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/23 23:15:26 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:45:05 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ray_casting(t_info *info, int x)
 	double	angle_frac;
 
 	info->ray->angle = info->player->player_angle - (POV_ANGLE / 2);
-	angle_frac = (POV_ANGLE / SCR_W);
+	angle_frac = (POV_ANGLE / x);
 	info->ray->id = x;
 	info->ray->angle = info->ray->angle + angle_frac;
 	calc_collision_x(info);
@@ -93,4 +93,5 @@ void	ray_casting(t_info *info, int x)
 		else
 			info->ray->texture = info->so_txt;
 	}
+	dbg_print_ray(info->ray);
 }

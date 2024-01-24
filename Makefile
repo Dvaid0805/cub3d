@@ -55,12 +55,10 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 
 clean:
 	$(REMOVE) $(OBJ_PATH)
-	$(MAKE) -C $(MLX_PATH) clean
 	$(MAKE) -C $(LIBFT_PATH) clean
 
 fclean: clean
 	$(REMOVE) $(NAME)
-	$(MAKE) -C $(MLX_PATH) fclean
 	$(MAKE) -C $(LIBFT_PATH) fclean
 
 re: fclean all
