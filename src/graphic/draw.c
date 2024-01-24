@@ -3,81 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/24 17:22:27 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:56:47 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	calc_y_pixel(int w_start, int w_end, int y, int texture_height)
+double	calc_y_pixel(int w_start, int w_end, int y)
 {
-    double	relative_y;
-    int		texture_y;
+	double	relative_y;
 
-    relative_y = (double)(y - w_start) / (w_end - w_start);
-    texture_y = (int)(relative_y * texture_height);
-    if (texture_y > texture_height - 1)
-        texture_y = texture_height - 1;
-    else if (texture_y < 0)
-        texture_y = 0;
-    return (texture_y);
+	relative_y = (double)(y - w_start) / (w_end - w_start);
+	return (relative_y);
 }
 
-int	get_texture_pixel_color(mlx_texture_t *texture, int y, int x)
+int	get_texture_pixel_color(mlx_texture_t *texture, double tex_y, double tex_x)
 {
-    uint8_t	*pixel;
+	uint8_t	*pixel;
+	int		lines_gap;
+	int		columns_gap;
+	int		bytes;
 
-    pixel = texture->pixels + (((y * texture->width) + x)
-            * texture->bytes_per_pixel);
-    return (ft_get_rgba(pixel[0], pixel[1], pixel[2], pixel[3]));
+	lines_gap = (int)(tex_y * (texture->height - 1)) * texture->width;
+	columns_gap = (int)(tex_x * texture->height);
+	bytes = texture->bytes_per_pixel;
+	pixel = texture->pixels + (int)(lines_gap + columns_gap) * bytes;
+	return (ft_get_rgba(pixel[0], pixel[1], pixel[2], pixel[3]));
 }
 
 void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
 {
-    int color;
-    int texY;
-    int y;
+	int		color;
+	double	tex_y;
+	int		y;
 
-    y = 1;
-    while (y < SCR_H)
-    {
-        if (y < w_start)
-            mlx_put_pixel(info->img, x, y, info->c_color);
-        else if (y > w_end)
-            mlx_put_pixel(info->img, x, y, info->f_color);
-        else
-        {
-            texY = calc_y_pixel(w_start, w_end, y, info->ray->texture->height);
-            color = get_texture_pixel_color(info->ray->texture, texY, x);
-            mlx_put_pixel(info->img, x, y, color);
-        }
-        y++;
-    }
+	y = 1;
+	while (y < SCR_H)
+	{
+		if (y < w_start)
+			mlx_put_pixel(info->img, x, y, info->c_color);
+		else if (y > w_end)
+			mlx_put_pixel(info->img, x, y, info->f_color);
+		else
+		{
+			tex_y = calc_y_pixel(w_start, w_end, y);
+			color = get_texture_pixel_color(info->ray->texture, tex_y, info->ray->tex_start);
+			mlx_put_pixel(info->img, x, y, color);
+		}
+		y++;
+	}
 }
 
-void  draw(t_info *info)
+void	draw(t_info *info)
 {
-    double x;
-    int     w_height;
-    int	w_start;
-    int	w_end;
+	double	x;
+	int		w_height;
+	int		w_start;
+	int		w_end;
+	double	angle_frac;
 
-    x = 0;
-
-    info->ray->angle = info->player->player_angle - (POV_ANGLE / 2);
-	double angle_frac = (POV_ANGLE / SCR_W);
-    while (x < SCR_W)
-    {
-        info->ray->angle = info->ray->angle + angle_frac;
-        ray_casting(info, x);
-        w_height = SCR_H / info->ray->dist;
-        w_start = (SCR_H / 2) - (w_height / 2);
-        w_end = (SCR_H / 2) + (w_height / 2);
-        fill_floor_ceilings_else(info, x, w_start, w_end);
-        x++;
-        /* init_ray(info->ray); */
-    }
+	x = 0;
+	info->ray->angle = info->player->player_angle - (POV_ANGLE / 2);
+	angle_frac = (POV_ANGLE / SCR_W);
+	while (x < SCR_W)
+	{
+		info->ray->angle = info->ray->angle + angle_frac;
+		ray_casting(info, x);
+		w_height = SCR_H / info->ray->dist;
+		w_start = (SCR_H / 2) - (w_height / 2);
+		w_end = (SCR_H / 2) + (w_height / 2);
+		fill_floor_ceilings_else(info, x, w_start, w_end);
+		x++;
+	}
 }
