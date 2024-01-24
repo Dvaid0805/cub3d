@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/24 15:14:24 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:29:52 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,16 @@ void		dbg_file_data(t_info *info);
 void		dbg_print_ray(t_ray *ray);
 
 // ----------------- GRAPHIC ----------------- //
-// Draw.c
+// draw.c
 void		draw(t_info *info);
 void		graphic_init(t_info *info);
-// Hook.c
+// hook.c
 void		ft_hook(void* param);
+// move.c
+void		move_up(t_info *info);
+void		move_down(t_info *info);
+void		move_left(t_info *info);
+void		move_right(t_info *info);
+// rotate.c
+void		rot_player(t_info *info, int angle);
 #endif

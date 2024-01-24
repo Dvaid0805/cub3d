@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_defines.h                                    :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/24 19:46:09 by pvilchez         ###   ########.fr       */
+/*   Created: 2024/01/24 20:24:11 by pvilchez          #+#    #+#             */
+/*   Updated: 2024/01/24 20:39:00 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_DEFINES_H
-# define CUB3D_DEFINES_H
+#include "cub3d.h"
 
-# include "cub3d.h"
-
-# define SCR_H 720
-# define SCR_W 1280
-# define POV_ANGLE (M_PI / 3)
-# define MOVE_SPEED 0.025
-# define ROT_SPEED 0.025
-
-enum	e_ErrorCode
+void	rot_player(t_info *info, int angle)
 {
-	E_MEMORY = 1,
-	E_OBLIG_DATA = 2,
-	E_INVALID_FILE = 3,
-	E_INVALID_MAP = 4,
-	E_MLX = 5,
-};
+	double	new_angle;
 
-#endif
+	new_angle = info->player->player_angle + (ROT_SPEED * angle);
+	if (new_angle > 2 * M_PI)
+		new_angle -= 2 * M_PI;
+	else if (new_angle < 0)
+		new_angle += 2 * M_PI;
+	info->player->player_angle = new_angle;
+	printf("angle: %f\n", info->player->player_angle);
+}

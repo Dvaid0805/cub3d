@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/24 17:16:24 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:06:03 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,15 @@ void	calc_collision_x(t_info *info)
 
 void	ray_casting(t_info *info, int x)
 {
+	double		anti_fish_eye;
+	
 	info->ray->id = x;
 	calc_collision_x(info);
 	calc_collision_y(info);
+	anti_fish_eye = cos(info->ray->angle - info->player->player_angle);
 	if (info->ray->dist_x < info->ray->dist_y)
 	{
-		info->ray->dist = info->ray->dist_x;
+		info->ray->dist = info->ray->dist_x * anti_fish_eye;
 		info->ray->tex_start = info->ray->cx_y - floor(info->ray->cx_y);
 		if (info->ray->angle > M_PI_2 && info->ray->angle < (3 * M_PI_2))
 			info->ray->texture = info->no_txt;
@@ -81,7 +84,7 @@ void	ray_casting(t_info *info, int x)
 	}
 	else
 	{
-		info->ray->dist = info->ray->dist_y;
+		info->ray->dist = info->ray->dist_y * anti_fish_eye;
 		info->ray->tex_start = info->ray->cy_x - floor(info->ray->cy_x);
 		if (info->ray->angle > 0 && info->ray->angle < M_PI)
 			info->ray->texture = info->we_txt;
