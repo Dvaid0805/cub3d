@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:00 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/24 12:19:43 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:29:26 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 double	get_player_direction(char c)
 {
 	if (c == 'E')
-		return ((3 * M_PI) / 2.0);
+		return (M_PI / 2.0);
 	else if (c == 'N')
 		return (M_PI);
 	else if (c == 'W')
-		return (M_PI / 2.0);
+		return ((3 * M_PI) / 2.0 + 0.001);
 	else if (c == 'S')
 		return (0);
 	return (-1);
