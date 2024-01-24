@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/24 13:45:37 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:22:27 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	get_texture_pixel_color(mlx_texture_t *texture, int y, int x)
 
 void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
 {
-    /* int color;
-    int texY; */
+    int color;
+    int texY;
     int y;
 
     y = 1;
@@ -50,10 +50,9 @@ void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
             mlx_put_pixel(info->img, x, y, info->f_color);
         else
         {
-            /* texY = calc_y_pixel(w_start, w_end, y, info->ray->texture->height);
+            texY = calc_y_pixel(w_start, w_end, y, info->ray->texture->height);
             color = get_texture_pixel_color(info->ray->texture, texY, x);
-            mlx_put_pixel(info->img, x, y, color); */
-            mlx_put_pixel(info->img, x, y, 0XFF0000FF);
+            mlx_put_pixel(info->img, x, y, color);
         }
         y++;
     }
@@ -61,20 +60,24 @@ void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
 
 void  draw(t_info *info)
 {
-    int x;
-    int	w_height;
+    double x;
+    int     w_height;
     int	w_start;
     int	w_end;
 
-    x = 1;
+    x = 0;
+
+    info->ray->angle = info->player->player_angle - (POV_ANGLE / 2);
+	double angle_frac = (POV_ANGLE / SCR_W);
     while (x < SCR_W)
     {
+        info->ray->angle = info->ray->angle + angle_frac;
         ray_casting(info, x);
         w_height = SCR_H / info->ray->dist;
         w_start = (SCR_H / 2) - (w_height / 2);
         w_end = (SCR_H / 2) + (w_height / 2);
         fill_floor_ceilings_else(info, x, w_start, w_end);
         x++;
-        init_ray(info->ray);
+        /* init_ray(info->ray); */
     }
 }

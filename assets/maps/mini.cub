@@ -1,7 +1,7 @@
-NO assets/textures/north.png
-SO assets/textures/south.png
-WE assets/textures/west.png
-EA assets/textures/east.png
+NO assets/textures/snow.png
+SO assets/textures/diamond.png
+WE assets/textures/sand.png
+EA assets/textures/grass.png
 
 F 0,255,0
 C 0,0,255

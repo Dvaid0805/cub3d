@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/24 13:45:05 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:16:24 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,7 @@ void	calc_collision_x(t_info *info)
 
 void	ray_casting(t_info *info, int x)
 {
-	double	angle_frac;
-
-	info->ray->angle = info->player->player_angle - (POV_ANGLE / 2);
-	angle_frac = (POV_ANGLE / x);
 	info->ray->id = x;
-	info->ray->angle = info->ray->angle + angle_frac;
 	calc_collision_x(info);
 	calc_collision_y(info);
 	if (info->ray->dist_x < info->ray->dist_y)
@@ -80,18 +75,17 @@ void	ray_casting(t_info *info, int x)
 		info->ray->dist = info->ray->dist_x;
 		info->ray->tex_start = info->ray->cx_y - floor(info->ray->cx_y);
 		if (info->ray->angle > M_PI_2 && info->ray->angle < (3 * M_PI_2))
-			info->ray->texture = info->we_txt;
-		else
 			info->ray->texture = info->no_txt;
+		else
+			info->ray->texture = info->so_txt;
 	}
 	else
 	{
 		info->ray->dist = info->ray->dist_y;
 		info->ray->tex_start = info->ray->cy_x - floor(info->ray->cy_x);
 		if (info->ray->angle > 0 && info->ray->angle < M_PI)
-			info->ray->texture = info->ea_txt;
+			info->ray->texture = info->we_txt;
 		else
-			info->ray->texture = info->so_txt;
+			info->ray->texture = info->ea_txt;
 	}
-	dbg_print_ray(info->ray);
 }
