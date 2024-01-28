@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/24 19:06:03 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:32:43 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 double	normalize_angle(double angle)
 {
-	angle = fmod(angle, (2 * M_PI));
 	if (angle < 0)
 		angle = (2 * M_PI) + angle;
+	else if (angle > (2 * M_PI))
+		angle = angle - (2 * M_PI);
 	return (angle);
 }
 
@@ -26,7 +27,7 @@ void	calc_collision_y(t_info *info)
 
 	info->ray->cy_x = info->player->player_x;
 	info->ray->cy_y = info->player->player_y;
-	while (is_wall(info->ray->cy_x, info->ray->cy_y, info) == false)
+	while (!is_wall(info->ray->cy_x, info->ray->cy_y, info))
 	{
 		if (info->ray->angle > 0 && info->ray->angle < M_PI)
 			info->ray->cy_y = ceil(info->ray->cy_y) - 1;
@@ -70,6 +71,7 @@ void	ray_casting(t_info *info, int x)
 	double		anti_fish_eye;
 	
 	info->ray->id = x;
+	info->ray->angle = normalize_angle(info->ray->angle);
 	calc_collision_x(info);
 	calc_collision_y(info);
 	anti_fish_eye = cos(info->ray->angle - info->player->player_angle);

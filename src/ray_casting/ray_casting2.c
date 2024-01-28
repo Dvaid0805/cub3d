@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:25:03 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/24 16:34:47 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:05:51 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ bool	is_wall(double x, double y, t_info *info)
 		next_y = calc_next_y(y, info);
 	if (info->map[next_x][next_y] != '0')
 	{
+		info->ray->CollCell_X = next_x;
+		info->ray->CollCell_Y = next_y;
 		return (true);
 	}
 	return (false);

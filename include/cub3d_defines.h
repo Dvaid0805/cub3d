@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/24 19:46:09 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:06:28 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define POV_ANGLE (M_PI / 3)
 # define MOVE_SPEED 0.025
 # define ROT_SPEED 0.025
+# define DBGRAYPERCENT 10
 
 enum	e_ErrorCode
 {
