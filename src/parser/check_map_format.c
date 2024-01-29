@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/29 17:45:58 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:37:17 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ static int	check_acceptable_map_values(t_info *info, char **m)
 		col = 0;
 		while (m[row][col])
 		{
-			if (ft_isspace(m[row][col]))
-				m[row][col] = '2';
-			else if (!is_acceptable_map_value(info->parser, m, row, col))
+			if (!is_acceptable_map_value(info->parser, m, row, col))
 				return (0);
 			col++;
 		}
@@ -105,6 +103,25 @@ static char	**get_map(int fd, char *last_line)
 	return (map);
 }
 
+void map_spaces_to_two(char **map)
+{
+	int row;
+	int col;
+
+	row = 0;
+	while (map[row])
+	{
+		col = 0;
+		while (map[row][col])
+		{
+			if (ft_isspace(map[row][col]))
+				map[row][col] = '2';
+			col++;
+		}
+		row++;
+	}
+}
+
 int	check_map_format(t_info *info, int fd, char *line)
 {
 	char	**map;
@@ -117,10 +134,11 @@ int	check_map_format(t_info *info, int fd, char *line)
 	map = get_map(fd, line);
 	if (!map)
 		return (free(line), close(fd), 0);
+	map_spaces_to_two(map);
+	make_map_rectangular(map);
 	if (!check_acceptable_map_values(info, map)
 		|| !check_is_surrounded_by_ones(map))
 		return (close(fd), ft_split_free(map), 0);
-	make_map_rectangular(map);
 	free(info->parser->map);
 	info->parser->map = map;
 	return (1);

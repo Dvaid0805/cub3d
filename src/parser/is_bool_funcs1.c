@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_bool_funcs1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/21 21:03:15 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:30:40 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	is_acceptable_map_value(t_parser *parser, char **map, int row, int col)
 {
-	if (is_valid_map_char(map[row][col]))
+	if (is_valid_map_char(map[row][col]) || map[row][col] == '2')
 	{
 		if (map[row][col] == 'N' || map[row][col] == 'S'
 			|| map[row][col] == 'W' || map[row][col] == 'E')
