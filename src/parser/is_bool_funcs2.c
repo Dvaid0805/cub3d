@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:32:05 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/10 20:39:35 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:53:01 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 bool	is_map_point_by_ones(char **map, int r, int c)
 {
-	if (map[r - 1][c] == ' ' || map[r + 1][c] == ' '
-		|| map[r][c - 1] == ' ' || map[r][c + 1] == ' '
-		|| map[r - 1][c - 1] == ' '
-		|| map[r - 1][c + 1] == ' ' || map[r + 1][c - 1] == ' '
-		|| map[r + 1][c + 1] == ' ')
+	if (map[r - 1][c] == '2' || map[r + 1][c] == '2'
+		|| map[r][c - 1] == '2' || map[r][c + 1] == '2')
 		return (false);
 	return (true);
 }
