@@ -7,16 +7,30 @@ REMOVE = rm -rf
 OBJ_PATH = obj
 SRC_PATH = src
 INC_PATH = include
-
+FREE_PATH = free
+PARSER_PATH = parser
+RAY_CASTING_PATH = ray_casting
+GRAPHIC_PATH = graphic
 MLX_PATH = assets/MLX42
 MLX_LIB_PATH = assets/MLX42/libmlx42.a
-
 LIBFT_PATH = assets/libft
 LIBFT_LIB_PATH = assets/libft/libft.a
 
 HEADERS	= -I $(MLX_PATH)/include/MLX42 -I $(LIBFT_PATH)/include/ -I ./include
 
-SRC = $(shell find $(SRC_PATH) -name '*.c')
+SRC = $(SRC_PATH)/$(FREE_PATH)/general_free.c \
+		\
+		$(SRC_PATH)/$(PARSER_PATH)/check_map_format.c $(SRC_PATH)/$(PARSER_PATH)/check_map_oblig_data.c $(SRC_PATH)/$(PARSER_PATH)/is_bool_funcs1.c \
+		$(SRC_PATH)/$(PARSER_PATH)/is_bool_funcs2.c $(SRC_PATH)/$(PARSER_PATH)/make_map_rectangle.c $(SRC_PATH)/$(PARSER_PATH)/parser_init.c \
+		$(SRC_PATH)/$(PARSER_PATH)/unplanned_exit.c \
+		\
+		$(SRC_PATH)/$(GRAPHIC_PATH)/draw.c $(SRC_PATH)/$(GRAPHIC_PATH)/graphic_init.c $(SRC_PATH)/$(GRAPHIC_PATH)/hook.c \
+		\
+		$(SRC_PATH)/$(RAY_CASTING_PATH)/ray_casting.c $(SRC_PATH)/$(RAY_CASTING_PATH)/ray_casting2.c \
+		\
+		$(SRC_PATH)/main.c $(SRC_PATH)/init.c $(SRC_PATH)/get_error_message.c $(SRC_PATH)/put_error.c $(SRC_PATH)/put_usage.c \
+		$(SRC_PATH)/steal_parser_data.c
+		
 OBJ = $(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRC))
 
 ORANGE = \033[1;38;5;208m
