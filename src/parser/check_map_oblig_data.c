@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:33:06 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/30 15:28:05 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:40:04 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,24 @@ static int	check_map_textures(char *line, t_parser *parser)
 
 int	check_map_oblig_data(t_parser *parser, int fd, char *line)
 {
+	char	*no_space_line;
+
+	no_space_line = NULL;
 	while (!is_enough_parser_oblig_data(parser) && get_next_line(fd, &line))
 	{
-		if (is_texture_or_color(line, false))
-		{
-			if (!check_map_textures(line, parser))
-				return (free(line), close(fd), 0);
-		}
-		else if (is_texture_or_color(line, true))
-		{
-			if (!check_map_color(line, parser))
-				return (free(line), close(fd), 0);
-		}
+		no_space_line = ft_strtrim(line, " ");
 		free(line);
+		if (is_texture_or_color(no_space_line, false))
+		{
+			if (!check_map_textures(no_space_line, parser))
+				return (free(no_space_line), close(fd), 0);
+		}
+		else if (is_texture_or_color(no_space_line, true))
+		{
+			if (!check_map_color(no_space_line, parser))
+				return (free(no_space_line), close(fd), 0);
+		}
+		free(no_space_line);
 	}
 	return (1);
 }
