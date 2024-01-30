@@ -6,11 +6,22 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:32:05 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/29 16:53:01 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:55:16 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+bool	is_valid_ext_png(char *texture)
+{
+	int	len;
+
+	len = ft_strlen(texture);
+	if (len >= 4 && texture[len - 1] == 'g' && texture[len - 2] == 'n'
+		&& texture[len - 3] == 'p' && texture[len - 4] == '.')
+		return (true);
+	return (false);
+}
 
 bool	is_map_point_by_ones(char **map, int r, int c)
 {

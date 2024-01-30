@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/30 11:59:52 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:55:39 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ bool		is_valid_map_char(char c);
 bool		is_enough_parser_oblig_data(t_parser *parser);
 bool		is_map_point_by_ones(char **map, int r, int c);
 bool		is_map_ages_ones(char **map, int r, int c);
+bool		is_valid_ext_png(char *texture);
 
 // ray_casting.c
 void		ray_casting(t_info *info, int x);
