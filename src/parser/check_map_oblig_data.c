@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:33:06 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/17 16:00:43 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:39:24 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ static int	check_map_textures(char *line, t_parser *parser)
 	fd = open(texture_loc, O_RDONLY);
 	if (fd < 0)
 		return (free(texture_loc), 0);
-	if (line[0] == 'N' && line[1] == 'O')
-		parser->no_txt_loc = texture_loc;
-	else if (line[0] == 'S' && line[1] == 'O')
-		parser->so_txt_loc = texture_loc;
-	else if (line[0] == 'W' && line[1] == 'E')
-		parser->we_txt_loc = texture_loc;
-	else if (line[0] == 'E' && line[1] == 'A')
-		parser->ea_txt_loc = texture_loc;
-	return (close(fd), 1);
+	if (line[0] == 'N' && line[1] == 'O' && !parser->no_txt_loc)
+		parser->no_txt_loc = strdup(texture_loc);
+	else if (line[0] == 'S' && line[1] == 'O' && !parser->so_txt_loc)
+		parser->so_txt_loc = strdup(texture_loc);
+	else if (line[0] == 'W' && line[1] == 'E' && !parser->we_txt_loc)
+		parser->we_txt_loc = strdup(texture_loc);
+	else if (line[0] == 'E' && line[1] == 'A' && !parser->ea_txt_loc)
+		parser->ea_txt_loc = strdup(texture_loc);
+	return (close(fd), free(texture_loc), 1);
 }
 
 int	check_map_oblig_data(t_parser *parser, int fd, char *line)
