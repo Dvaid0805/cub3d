@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:20:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 12:00:12 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:26:56 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_parser(t_parser *parser)
 	free(parser);
 }
 
-void free_info(t_info *info)
+void	free_info(t_info *info)
 {
 	if (info->no_txt)
 		mlx_delete_texture(info->no_txt);
@@ -51,7 +51,7 @@ void free_info(t_info *info)
 	free(info);
 }
 
-void general_free(t_info *info)
+void	general_free(t_info *info)
 {
 	if (info->parser)
 		free_parser(info->parser);

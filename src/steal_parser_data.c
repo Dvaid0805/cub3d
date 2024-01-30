@@ -6,13 +6,13 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:50:18 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/23 15:50:26 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:26:31 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void steal_parser_data(t_info *info)
+void	steal_parser_data(t_info *info)
 {
 	info->no_txt = mlx_load_png(info->parser->no_txt_loc);
 	info->so_txt = mlx_load_png(info->parser->so_txt_loc);

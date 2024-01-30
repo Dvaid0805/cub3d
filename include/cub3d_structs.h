@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_structs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/28 12:59:17 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/30 12:02:44 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_ray
 	double			cy_y;
 	double			dist_y;
 	double			height;
-	int				CollCell_X;
-	int				CollCell_Y;
+	int				coll_cell_x;
+	int				coll_cell_y;
 }				t_ray;
 
 typedef struct s_parser

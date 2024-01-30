@@ -6,20 +6,20 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/29 17:47:01 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:30:46 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void init_player(t_player *player)
+static void	init_player(t_player *player)
 {
 	player->player_x = -1;
 	player->player_y = -1;
 	player->player_angle = -1;
 }
 
-void init_ray(t_ray *ray)
+void	init_ray(t_ray *ray)
 {
 	ray->angle = -1;
 	ray->cx_x = -1;
@@ -32,7 +32,7 @@ void init_ray(t_ray *ray)
 	ray->height = -1;
 }
 
-static void init_structs(t_info *info)
+static void	init_structs(t_info *info)
 {
 	info->player = (t_player *)malloc(sizeof(t_player));
 	if (!info->player)
@@ -47,7 +47,7 @@ static void init_structs(t_info *info)
 
 static t_info	*initial_info(void)
 {
-	t_info *info;
+	t_info	*info;
 
 	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
@@ -70,16 +70,13 @@ static t_info	*initial_info(void)
 	return (info);
 }
 
-
-
-void init(char **argv)
+void	init(char **argv)
 {
-	t_info *info;
+	t_info	*info;
 
 	info = initial_info();
 	parser_init(info, argv[1]);
 	init_structs(info);
-	dbg_file_data(info);
 	graphic_init(info);
 	general_free(info);
 }

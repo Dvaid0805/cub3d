@@ -6,25 +6,25 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:03:08 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/29 20:30:40 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:59:05 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_acceptable_map_value(t_parser *parser, char **map, int row, int col)
+bool	is_acceptable_map_value(t_parser *p, char **m, int r, int c)
 {
-	if (is_valid_map_char(map[row][col]) || map[row][col] == '2')
+	if (is_valid_map_char(m[r][c]) || m[r][c] == '2')
 	{
-		if (map[row][col] == 'N' || map[row][col] == 'S'
-			|| map[row][col] == 'W' || map[row][col] == 'E')
+		if (m[r][c] == 'N' || m[r][c] == 'S'
+			|| m[r][c] == 'W' || m[r][c] == 'E')
 		{
-			if (parser->player_x == -1 && parser->player_y == -1)
+			if (p->player_x == -1 && p->player_y == -1)
 			{
-				parser->player_angle = get_player_direction(map[row][col]);
-				parser->player_x = row + 0.5;
-				parser->player_y = col + 0.5;
-				map[row][col] = '0';
+				p->player_angle = get_player_direction(m[r][c]);
+				p->player_x = r + 0.5;
+				p->player_y = c + 0.5;
+				m[r][c] = '0';
 			}
 			else
 				return (put_error(0, "Error: more than 1 player\n"), false);

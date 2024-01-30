@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:20:47 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/29 20:37:17 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:33:15 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,25 +101,6 @@ static char	**get_map(int fd, char *last_line)
 	}
 	map[line_count] = NULL;
 	return (map);
-}
-
-void map_spaces_to_two(char **map)
-{
-	int row;
-	int col;
-
-	row = 0;
-	while (map[row])
-	{
-		col = 0;
-		while (map[row][col])
-		{
-			if (ft_isspace(map[row][col]))
-				map[row][col] = '2';
-			col++;
-		}
-		row++;
-	}
 }
 
 int	check_map_format(t_info *info, int fd, char *line)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:10:17 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/28 14:32:43 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:55:56 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	calc_collision_y(t_info *info)
 			info->ray->cy_y = ceil(info->ray->cy_y) - 1;
 		else
 			info->ray->cy_y = floor(info->ray->cy_y) + 1;
-		info->ray->cy_x = (info->player->player_y - info->ray->cy_y) / tan(info->ray->angle);
+		info->ray->cy_x = (info->player->player_y - info->ray->cy_y)
+			/ tan(info->ray->angle);
 		info->ray->cy_x += info->player->player_x;
 	}
 	pow_aux = pow(info->player->player_x - info->ray->cy_x, 2);
@@ -42,7 +43,6 @@ void	calc_collision_y(t_info *info)
 		pow_aux = 10000;
 	info->ray->dist_y = sqrt(pow_aux);
 }
-
 
 void	calc_collision_x(t_info *info)
 {
@@ -56,7 +56,8 @@ void	calc_collision_x(t_info *info)
 			info->ray->cx_x = ceil(info->ray->cx_x) - 1;
 		else
 			info->ray->cx_x = floor(info->ray->cx_x) + 1;
-		info->ray->cx_y = (info->player->player_x - info->ray->cx_x) * tan(info->ray->angle);
+		info->ray->cx_y = (info->player->player_x - info->ray->cx_x)
+			* tan(info->ray->angle);
 		info->ray->cx_y += info->player->player_y;
 	}
 	pow_aux = pow(info->player->player_x - info->ray->cx_x, 2);
@@ -69,7 +70,7 @@ void	calc_collision_x(t_info *info)
 void	ray_casting(t_info *info, int x)
 {
 	double		anti_fish_eye;
-	
+
 	info->ray->id = x;
 	info->ray->angle = normalize_angle(info->ray->angle);
 	calc_collision_x(info);

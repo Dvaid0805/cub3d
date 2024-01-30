@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:59:52 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/29 17:46:34 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:59:52 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void		put_usage(void);
 const char	*get_error_message(enum e_ErrorCode code);
 void		put_error(int error_num, char *custom_message);
 void		unplanned_exit(t_info *info, int error_code);
-void 		make_map_rectangular(char **map);
+void		make_map_rectangular(char **map);
+void		map_spaces_to_two(char **map);
 
 // map_parsing.c
 void		parser_init(t_info *info, char *argv);
@@ -48,7 +49,7 @@ int			check_map_format(t_info *info, int fd, char *line);
 double		get_player_direction(char c);
 
 // is_bool_functions.c
-bool		is_acceptable_map_value(t_parser *parser, char **map, int row, int col);
+bool		is_acceptable_map_value(t_parser *p, char **m, int r, int c);
 bool		is_texture_or_color(char *s, bool color_check_bool);
 bool		is_all_spaces(const char *str);
 bool		is_valid_map_char(char c);
@@ -62,17 +63,12 @@ void		ray_casting(t_info *info, int x);
 // ray_casting2.c
 bool		is_wall(double x, double y, t_info *info);
 
-// dbg_functions.c
-void		dbg_file_data(t_info *info);
-void		dbg_print_ray(t_ray *ray, int percent);
-void		dbg_print_ray_mini(t_ray *ray, int percent);
-
 // ----------------- GRAPHIC ----------------- //
 // draw.c
 void		draw(t_info *info);
 void		graphic_init(t_info *info);
 // hook.c
-void		ft_hook(void* param);
+void		ft_hook(void *param);
 // move.c
 void		move_up(t_info *info);
 void		move_down(t_info *info);

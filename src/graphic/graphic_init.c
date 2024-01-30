@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   graphic_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:07:09 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/24 22:47:54 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:31:54 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void graphic_init(t_info *info)
+void	graphic_init(t_info *info)
 {
 	info->mlx = mlx_init(SCR_W, SCR_H, "cub3D", false);
 	if (!info->mlx)

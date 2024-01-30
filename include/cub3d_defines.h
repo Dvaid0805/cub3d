@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:55:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2024/01/29 16:51:38 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 12:01:06 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 # define SCR_H 720
 # define SCR_W 1280
-# define POV_ANGLE (M_PI / 3)
 # define MOVE_SPEED 0.045
 # define ROT_SPEED 0.045
 # define DBGRAYPERCENT 10

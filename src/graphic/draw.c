@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:11 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/24 22:56:47 by pvilchez         ###   ########.fr       */
+/*   Updated: 2024/01/30 12:01:28 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	get_texture_pixel_color(mlx_texture_t *texture, double tex_y, double tex_x)
 	int		columns_gap;
 	int		bytes;
 
-	lines_gap = (int)(tex_y * (texture->height - 1)) * texture->width;
+	lines_gap = (int)(tex_y * (texture->height - 1)) *texture->width;
 	columns_gap = (int)(tex_x * texture->height);
 	bytes = texture->bytes_per_pixel;
-	pixel = texture->pixels + (int)(lines_gap + columns_gap) * bytes;
+	pixel = texture->pixels + (int)(lines_gap + columns_gap) *bytes;
 	return (ft_get_rgba(pixel[0], pixel[1], pixel[2], pixel[3]));
 }
 
@@ -50,7 +50,8 @@ void	fill_floor_ceilings_else(t_info *info, int x, int w_start, int w_end)
 		else
 		{
 			tex_y = calc_y_pixel(w_start, w_end, y);
-			color = get_texture_pixel_color(info->ray->texture, tex_y, info->ray->tex_start);
+			color = get_texture_pixel_color(info->ray->texture,
+					tex_y, info->ray->tex_start);
 			mlx_put_pixel(info->img, x, y, color);
 		}
 		y++;
@@ -66,8 +67,8 @@ void	draw(t_info *info)
 	double	angle_frac;
 
 	x = 0;
-	info->ray->angle = info->player->player_angle - (POV_ANGLE / 2);
-	angle_frac = (POV_ANGLE / SCR_W);
+	info->ray->angle = info->player->player_angle - ((M_PI / 3) / 2);
+	angle_frac = ((M_PI / 3) / SCR_W);
 	while (x < SCR_W)
 	{
 		info->ray->angle = info->ray->angle + angle_frac;
