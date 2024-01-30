@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:33:06 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/30 14:56:27 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:28:05 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	check_map_textures(char *line, t_parser *parser)
 	fd = open(texture_loc, O_RDONLY);
 	if (fd < 0)
 		return (free(texture_loc), 0);
-	if (!is_valid_ext_png(texture_loc))	
+	if (!is_valid_ext_png(texture_loc))
 		return (free(texture_loc), close(fd), 0);
 	if (line[0] == 'N' && line[1] == 'O' && !parser->no_txt_loc)
 		parser->no_txt_loc = strdup(texture_loc);

@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:41:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2024/01/30 11:30:46 by dbredykh         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:25:58 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static void	init_structs(t_info *info)
 		unplanned_exit(info, E_MEMORY);
 	init_ray(info->ray);
 	steal_parser_data(info);
+	if (!info->no_txt || !info->so_txt || !info->we_txt || !info->ea_txt)
+		unplanned_exit(info, E_INVALID_FILE);
 }
 
 static t_info	*initial_info(void)
