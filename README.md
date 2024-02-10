@@ -1,4 +1,7 @@
 # 🧊 Cub3D
+
+![Screen Recording - Feb 10, 2024](https://github.com/BredyByte/cub3d/assets/81176650/62caeeeb-18d1-46e9-a188-019cf8f778e8)
+
 Cub3D is a fascinating project inspired by the world's first-ever first-person shooter, Wolfenstein 3D, which was a significant pioneer of the genre in the early 1990s. This project aims to recreate the technique of ray-casting used in the original game, albeit in a more modern and simplified context.
 
 The Cub3D project is not just about creating a game, but it's about appreciating the history of computer graphics and understanding the underlying techniques that make our favorite video games possible.
